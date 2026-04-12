@@ -1,0 +1,8 @@
+<svg viewBox="0 0 280 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brand mark -->
+  <rect x="1.5" y="9.5" width="21" height="21" stroke="#1E3A8A" stroke-width="1.5"/>
+  <rect x="6" y="14" width="12" height="12" stroke="#E87722" stroke-width="1.5"/>
+  <rect x="9.5" y="17.5" width="5" height="5" fill="#C8321F"/>
+  <!-- Text rendered via HTML in production — this SVG is for OG/social only -->
+  <text x="32" y="27" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#0E1014">Grafismo Comunicaciones</text>
+</svg>
