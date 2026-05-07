@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { SectionHead } from "./SectionHead";
 import { MethodSteps } from "./MethodSteps";
+import { HeroPhotoGrid } from "./HeroPhotoGrid";
+import { ClientLogoStrip } from "./ClientLogoStrip";
+import { FeaturedProjects } from "./FeaturedProjects";
 import { projectsPath } from "@/lib/routes";
 import type { Lang } from "@/data/projects";
 import type { Dict } from "@/lib/i18n";
@@ -13,8 +16,8 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
     <main className="relative z-[2]">
       {/* ============ HERO ============ */}
       <section
-        className="min-h-screen grid grid-cols-1 content-between gap-16"
-        style={{ padding: "160px max(5vw, 32px) 72px" }}
+        className="relative"
+        style={{ padding: "140px max(5vw, 32px) 56px" }}
       >
         <div className="flex items-center gap-4 flex-wrap font-mono-g text-[11px] font-medium tracking-[0.14em] uppercase text-[var(--stone)]">
           <span className="text-[var(--ink)]">{d.eyebrow.num}</span>
@@ -34,95 +37,109 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
           <span>{d.eyebrow.location}</span>
         </div>
 
-        <h1
-          className="font-display italic font-normal text-[clamp(52px,8.2vw,136px)] leading-[0.92] tracking-[-0.035em] max-w-[14ch]"
-        >
-          <span className="block rise" style={{ animationDelay: "0.15s" }}>
-            {d.hero.line1}
-          </span>
-          <span
-            className="block rise pl-[0.4em] md:pl-[1.2em]"
-            style={{ animationDelay: "0.3s" }}
-          >
-            {d.hero.line2}
-          </span>
-          <span className="block rise" style={{ animationDelay: "0.45s" }}>
-            <span className="relative inline-block hero-accent">
-              {d.hero.line3}
-            </span>
-            <span
-              className="inline-block align-baseline bg-[var(--pharma)] rounded-full"
-              style={{
-                width: "0.22em",
-                height: "0.22em",
-                transform: "translateY(-0.04em)",
-                marginLeft: "0.08em",
-              }}
-            />
-          </span>
-        </h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-14 items-end">
-          <p
-            className="max-w-[52ch] text-[15.5px] leading-[1.55] text-[var(--ink-2)] rise"
-            style={{ animationDelay: "1s" }}
-          >
-            {d.hero.subA}
-            <span className="text-[var(--pharma)] font-medium">{d.hero.subPharma}</span>
-            {d.hero.subRetailA}
-            <span className="text-[var(--retail-2)] font-medium">{d.hero.subRetail}</span>
-            {d.hero.subIndustrialA}
-            <span className="text-[var(--industrial)] font-medium">{d.hero.subIndustrial}</span>
-            {d.hero.subB}
-          </p>
-          <div
-            className="flex flex-col items-start gap-[18px] rise"
-            style={{ animationDelay: "1.15s" }}
-          >
-            <Link
-              href="#contacto"
-              className="btn-g btn-primary-g inline-flex items-center gap-3 px-[22px] py-[14px] rounded-full text-[14px] font-medium"
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-start mt-10 lg:mt-12">
+          <div className="flex flex-col gap-10">
+            <h1
+              className="font-display italic font-normal text-[clamp(46px,6.4vw,108px)] leading-[0.94] tracking-[-0.03em] max-w-[14ch]"
             >
-              {d.hero.ctaPrimary} <span className="arr">→</span>
-            </Link>
-            <Link
-              href="#metodologia"
-              className="btn-g btn-ghost-g inline-block text-[14px] font-medium"
-            >
-              {d.hero.ctaSecondary}
-            </Link>
-          </div>
-
-          <div
-            className="col-span-full mt-5 pt-6 grid grid-cols-2 md:grid-cols-4 gap-y-6 border-t border-[var(--border)] font-mono-g rise"
-            style={{ animationDelay: "1.3s" }}
-          >
-            {[
-              { v: d.hero.stat1Value, k: d.hero.stat1Label, c: "var(--pharma)" },
-              { v: d.hero.stat2Value, k: d.hero.stat2Label, c: "var(--retail)" },
-              { v: d.hero.stat3Value, k: d.hero.stat3Label, c: "var(--industrial)" },
-              { v: d.hero.stat4Value, k: d.hero.stat4Label, c: "var(--ink)" },
-            ].map((s, i) => (
-              <div
-                key={i}
-                className={`px-3 md:px-5 ${i === 0 ? "pl-0" : ""} ${i === 3 ? "pr-0" : ""} ${i < 3 ? "md:border-r border-[var(--border)]" : ""}`}
+              <span className="block rise" style={{ animationDelay: "0.15s" }}>
+                {d.hero.line1}
+              </span>
+              <span
+                className="block rise pl-[0.4em] md:pl-[1.1em]"
+                style={{ animationDelay: "0.3s" }}
               >
-                <div
-                  className="font-display italic font-normal text-[clamp(26px,3vw,44px)] leading-none tracking-[-0.015em]"
-                  style={{ color: s.c }}
-                >
-                  {s.v}
-                </div>
-                <span className="block mt-[10px] text-[10.5px] tracking-[0.14em] uppercase text-[var(--stone)]">
-                  {s.k}
+                {d.hero.line2}
+              </span>
+              <span className="block rise" style={{ animationDelay: "0.45s" }}>
+                <span className="relative inline-block hero-accent">
+                  {d.hero.line3}
                 </span>
-              </div>
-            ))}
+                <span
+                  className="inline-block align-baseline bg-[var(--pharma)] rounded-full"
+                  style={{
+                    width: "0.22em",
+                    height: "0.22em",
+                    transform: "translateY(-0.04em)",
+                    marginLeft: "0.08em",
+                  }}
+                />
+              </span>
+            </h1>
+
+            <p
+              className="max-w-[52ch] text-[15.5px] leading-[1.55] text-[var(--ink-2)] rise"
+              style={{ animationDelay: "1s" }}
+            >
+              {d.hero.subA}
+              <span className="text-[var(--pharma)] font-medium">{d.hero.subPharma}</span>
+              {d.hero.subRetailA}
+              <span className="text-[var(--retail-2)] font-medium">{d.hero.subRetail}</span>
+              {d.hero.subIndustrialA}
+              <span className="text-[var(--industrial)] font-medium">{d.hero.subIndustrial}</span>
+              {d.hero.subB}
+            </p>
+
+            <div
+              className="flex items-center gap-7 flex-wrap rise"
+              style={{ animationDelay: "1.15s" }}
+            >
+              <Link
+                href="#contacto"
+                className="btn-g btn-primary-g inline-flex items-center gap-3 px-[22px] py-[14px] rounded-full text-[14px] font-medium"
+              >
+                {d.hero.ctaPrimary} <span className="arr">→</span>
+              </Link>
+              <Link
+                href="#proyectos-destacados"
+                className="btn-g btn-ghost-g inline-block text-[14px] font-medium"
+              >
+                {d.hero.ctaSecondary}
+              </Link>
+            </div>
           </div>
+
+          <div
+            className="relative w-full rise"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <HeroPhotoGrid lang={lang} />
+          </div>
+        </div>
+
+        <div
+          className="mt-14 lg:mt-16 pt-6 grid grid-cols-2 md:grid-cols-4 gap-y-6 border-t border-[var(--border)] font-mono-g rise"
+          style={{ animationDelay: "1.3s" }}
+        >
+          {[
+            { v: d.hero.stat1Value, k: d.hero.stat1Label, c: "var(--pharma)" },
+            { v: d.hero.stat2Value, k: d.hero.stat2Label, c: "var(--retail)" },
+            { v: d.hero.stat3Value, k: d.hero.stat3Label, c: "var(--industrial)" },
+            { v: d.hero.stat4Value, k: d.hero.stat4Label, c: "var(--ink)" },
+          ].map((s, i) => (
+            <div
+              key={i}
+              className={`px-3 md:px-5 ${i === 0 ? "pl-0" : ""} ${i === 3 ? "pr-0" : ""} ${i < 3 ? "md:border-r border-[var(--border)]" : ""}`}
+            >
+              <div
+                className="font-display italic font-normal text-[clamp(24px,2.6vw,38px)] leading-none tracking-[-0.015em]"
+                style={{ color: s.c }}
+              >
+                {s.v}
+              </div>
+              <span className="block mt-[8px] text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
+                {s.k}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 
+      <ClientLogoStrip dict={dict} />
+
       <div className="bound">
+        <FeaturedProjects lang={lang} dict={dict} />
+
         {/* ============ MENSAJE CLAVE ============ */}
         <section className="py-[120px] relative">
           <SectionHead label={d.mensaje.label} num={d.mensaje.num} />

@@ -41,9 +41,27 @@ export const es = {
       stat4Value: "GC—001",
       stat4Label: "Proyecto / 2026",
     },
+    clients: {
+      label: "Hemos trabajado con",
+      more: "Y más",
+    },
+    featured: {
+      label: "Proyectos destacados",
+      num: "002",
+      headingA: "Casos donde el ",
+      headingEm: "criterio se ve",
+      headingB: ".",
+      note:
+        "Una selección de trabajos en los que el oficio editorial, regulatorio y operativo se vuelve visible — desde laboratorios farmacéuticos hasta señalética corporativa.",
+      cta: "Ver caso",
+      ctaAll: "Ver todos los proyectos",
+      jjOutcome: "Sistema editorial unificado adoptado por todas las áreas internas — producción más rápida, marca más consistente.",
+      cardinalOutcome: "Materiales clínicos validados por especialistas — diseño como instrumento de lectura, no como decoración.",
+      terranumOutcome: "Wayfinding corporativo legible de un vistazo — sistema sostenible que se mantiene y se expande sin perder coherencia.",
+    },
     mensaje: {
       label: "Enfoque",
-      num: "002",
+      num: "003",
       quoteA:
         "Nuestro enfoque va más allá del diseño — ",
       quoteEm:
@@ -53,7 +71,7 @@ export const es = {
     },
     about: {
       label: "Quiénes somos",
-      num: "003",
+      num: "004",
       headingA: "Diseño con ",
       headingEm: "propósito regulado",
       headingB: ".",
@@ -70,7 +88,7 @@ export const es = {
     },
     sectors: {
       label: "Áreas de impacto",
-      num: "004",
+      num: "005",
       headingA: "Tres sectores, ",
       headingEm: "un mismo estándar",
       headingB: ".",
@@ -97,7 +115,7 @@ export const es = {
     },
     leader: {
       label: "Liderazgo",
-      num: "005",
+      num: "006",
       headingA: "Un oficio ",
       headingEm: "construido por fases",
       headingB: ".",
@@ -118,7 +136,7 @@ export const es = {
     },
     impact: {
       label: "Impacto",
-      num: "006",
+      num: "007",
       headingA: "Lo que el ",
       headingEm: "oficio deja medible",
       headingB: ".",
@@ -137,7 +155,7 @@ export const es = {
     },
     method: {
       label: "Metodología",
-      num: "007",
+      num: "008",
       headingA: "Un proceso ",
       headingEm: "de cinco pasos",
       headingB: ".",
@@ -156,7 +174,7 @@ export const es = {
     },
     validate: {
       label: "Validación",
-      num: "008",
+      num: "009",
       headingA: "Voces que ",
       headingEm: "respaldan el oficio",
       headingB: ".",
@@ -172,7 +190,7 @@ export const es = {
     },
     projection: {
       label: "Proyección Internacional",
-      num: "009",
+      num: "010",
       eyebrow: "CO → US · Applicability",
       headingA: "Un estándar pensado para ",
       headingEm: "mercados avanzados",
@@ -182,7 +200,7 @@ export const es = {
     },
     contact: {
       label: "Contacto",
-      num: "010",
+      num: "011",
       headingA: "Iniciemos ",
       headingEm: "un proyecto",
       headingB: ".",
@@ -303,16 +321,34 @@ export const en = {
       stat4Value: "GC—001",
       stat4Label: "Project / 2026",
     },
+    clients: {
+      label: "We have worked with",
+      more: "And more",
+    },
+    featured: {
+      label: "Featured projects",
+      num: "002",
+      headingA: "Cases where the ",
+      headingEm: "criterion shows",
+      headingB: ".",
+      note:
+        "A selection of work where the editorial, regulatory, and operational craft becomes visible — from pharmaceutical labs to corporate signage.",
+      cta: "View case",
+      ctaAll: "View all projects",
+      jjOutcome: "Unified editorial system adopted across all internal verticals — faster production, more consistent brand.",
+      cardinalOutcome: "Clinical materials validated by specialists — design as a reading instrument, not decoration.",
+      terranumOutcome: "Corporate wayfinding readable at a glance — a sustainable system that's maintained and expanded without losing coherence.",
+    },
     mensaje: {
       label: "Approach",
-      num: "002",
+      num: "003",
       quoteA: "Our approach goes beyond design — ",
       quoteEm: "we build solutions that communicate, comply and protect",
       quoteB: ", driving the credibility and competitiveness of each sector.",
     },
     about: {
       label: "Who we are",
-      num: "003",
+      num: "004",
       headingA: "Design with ",
       headingEm: "regulated purpose",
       headingB: ".",
@@ -329,7 +365,7 @@ export const en = {
     },
     sectors: {
       label: "Areas of impact",
-      num: "004",
+      num: "005",
       headingA: "Three sectors, ",
       headingEm: "one standard",
       headingB: ".",
@@ -356,7 +392,7 @@ export const en = {
     },
     leader: {
       label: "Leadership",
-      num: "005",
+      num: "006",
       headingA: "A craft ",
       headingEm: "built in phases",
       headingB: ".",
@@ -377,7 +413,7 @@ export const en = {
     },
     impact: {
       label: "Impact",
-      num: "006",
+      num: "007",
       headingA: "What the ",
       headingEm: "craft leaves measurable",
       headingB: ".",
@@ -396,7 +432,7 @@ export const en = {
     },
     method: {
       label: "Method",
-      num: "007",
+      num: "008",
       headingA: "A process ",
       headingEm: "of five steps",
       headingB: ".",
@@ -415,7 +451,7 @@ export const en = {
     },
     validate: {
       label: "Validation",
-      num: "008",
+      num: "009",
       headingA: "Voices that ",
       headingEm: "back the craft",
       headingB: ".",
@@ -431,7 +467,7 @@ export const en = {
     },
     projection: {
       label: "International Applicability",
-      num: "009",
+      num: "010",
       eyebrow: "CO → US · Applicability",
       headingA: "A standard built for ",
       headingEm: "advanced markets",
@@ -441,7 +477,7 @@ export const en = {
     },
     contact: {
       label: "Contact",
-      num: "010",
+      num: "011",
       headingA: "Let's start ",
       headingEm: "a project",
       headingB: ".",

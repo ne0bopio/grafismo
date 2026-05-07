@@ -607,6 +607,14 @@ export const projects: Project[] = [
   },
 ];
 
+export const featuredSlugs = ["johnson-johnson", "cardinal-health", "terranum"] as const;
+
+export function getFeaturedProjects(): Project[] {
+  return featuredSlugs
+    .map((slug) => projects.find((p) => p.slug === slug))
+    .filter((p): p is Project => Boolean(p));
+}
+
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
