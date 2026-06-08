@@ -17,7 +17,6 @@ export function CapsuleNav({ lang, dict }: { lang: Lang; dict: Dict }) {
   const { active, progress } = useActiveSection();
 
   const links: NavLink[] = [
-    { id: "sectores", href: `${home}#sectores`, label: dict.nav.sectors },
     { id: "projects", href: projects, label: dict.nav.projects },
     { id: "liderazgo", href: `${home}#liderazgo`, label: dict.nav.leadership },
     { id: "contacto", href: `${home}${contactHash(lang)}`, label: dict.nav.contact },

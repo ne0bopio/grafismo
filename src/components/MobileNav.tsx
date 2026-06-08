@@ -46,7 +46,6 @@ export function MobileNav({ lang, dict }: { lang: Lang; dict: Dict }) {
 
   const links = [
     { href: home, label: dict.nav.home },
-    { href: `${home}#sectores`, label: dict.nav.sectors },
     { href: projects, label: dict.nav.projects },
     { href: `${home}#liderazgo`, label: dict.nav.leadership },
     { href: `${home}#metodologia`, label: dict.nav.method },

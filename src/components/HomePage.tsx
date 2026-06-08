@@ -160,102 +160,6 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
           </div>
         </section>
 
-        {/* ============ QUIÉNES SOMOS ============ */}
-        <section className="py-12 pb-24">
-          <SectionHead label={d.about.label} num={d.about.num} />
-          <div className="grid md:grid-cols-[5fr_7fr] gap-14 items-end mt-12">
-            <div
-              className="relative aspect-[4/5] border border-[var(--border)] overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(200,50,31,0.12), rgba(30,58,138,0.12)), var(--cream-3)",
-              }}
-            >
-              <span className="absolute inset-6 border border-[rgba(14,16,20,0.14)] pointer-events-none" />
-              <span className="absolute left-8 top-8 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
-                {d.about.photoLabel}
-              </span>
-              <span className="absolute left-8 right-8 bottom-8 font-display italic text-[22px] text-[var(--ink)]">
-                {d.about.photoTitle}
-              </span>
-            </div>
-            <div>
-              <h2 className="font-display italic font-normal text-[clamp(40px,5vw,76px)] leading-[0.95] tracking-[-0.025em] max-w-[12ch]">
-                {d.about.headingA}
-                <em className="not-italic italic text-[var(--pharma)]">
-                  {d.about.headingEm}
-                </em>
-                {d.about.headingB}
-              </h2>
-              <p className="mt-8 text-[16px] leading-[1.55] text-[var(--ink-2)] max-w-[46ch]">
-                {d.about.body}
-              </p>
-              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-8 font-mono-g text-[11px] tracking-[0.12em] uppercase">
-                <div>
-                  <span className="block text-[var(--stone)]">{d.about.meta1K}</span>
-                  <span className="block mt-1.5 font-medium text-[var(--ink)]">
-                    {d.about.meta1V}
-                  </span>
-                </div>
-                <div>
-                  <span className="block text-[var(--stone)]">{d.about.meta2K}</span>
-                  <span className="block mt-1.5 font-medium text-[var(--ink)]">
-                    {d.about.meta2V}
-                  </span>
-                </div>
-                <div>
-                  <span className="block text-[var(--stone)]">{d.about.meta3K}</span>
-                  <span className="block mt-1.5 font-medium text-[var(--ink)]">
-                    {d.about.meta3V}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============ ÁREAS DE IMPACTO ============ */}
-        <section id="sectores" className="pt-24 pb-[120px]">
-          <SectionHead label={d.sectors.label} num={d.sectors.num} />
-          <div className="grid md:grid-cols-2 gap-14 items-end mb-14 mt-12">
-            <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,88px)] leading-[0.95] tracking-[-0.025em] max-w-[12ch]">
-              {d.sectors.headingA}
-              <em className="not-italic italic text-[var(--pharma)]">
-                {d.sectors.headingEm}
-              </em>
-              {d.sectors.headingB}
-            </h2>
-            <p className="text-[15px] leading-[1.55] text-[var(--ink-2)] max-w-[44ch]">
-              {d.sectors.note}
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <SectorCard
-              tone="pharma"
-              tag={d.sectors.pharmaTag}
-              title={d.sectors.pharmaTitle}
-              body={d.sectors.pharmaBody}
-              metric={d.sectors.pharmaMetric}
-              photo={d.sectors.pharmaPhoto}
-            />
-            <SectorCard
-              tone="retail"
-              tag={d.sectors.retailTag}
-              title={d.sectors.retailTitle}
-              body={d.sectors.retailBody}
-              metric={d.sectors.retailMetric}
-              photo={d.sectors.retailPhoto}
-            />
-            <SectorCard
-              tone="industrial"
-              tag={d.sectors.industrialTag}
-              title={d.sectors.industrialTitle}
-              body={d.sectors.industrialBody}
-              metric={d.sectors.industrialMetric}
-              photo={d.sectors.industrialPhoto}
-            />
-          </div>
-        </section>
       </div>
 
       {/* ============ LIDERAZGO ============ */}
@@ -266,20 +170,26 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
         <div className="bound">
           <SectionHead label={d.leader.label} num={d.leader.num} />
           <div className="grid md:grid-cols-[5fr_7fr] gap-[72px] items-start mt-12">
-            <div
-              className="relative aspect-[4/5] border border-[var(--border)]"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 30% 20%, rgba(30,58,138,0.18), transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(200,50,31,0.12), transparent 60%), var(--cream-3)",
-              }}
-            >
-              <span className="absolute inset-5 border border-[rgba(14,16,20,0.14)] pointer-events-none" />
-              <span className="absolute top-7 left-7 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
-                {d.leader.photoLabel}
-              </span>
-              <span className="absolute left-7 bottom-7 font-display italic text-[30px] text-[var(--ink)]">
-                {d.leader.photoName}
-              </span>
+            <div className="relative aspect-[4/5] border border-[var(--border)] overflow-hidden bg-[var(--cream-3)]">
+              <img
+                src="/images/leadership/oscar.jpg"
+                alt={d.leader.photoName}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 p-6 pt-14"
+                style={{
+                  background:
+                    "linear-gradient(180deg, transparent, rgba(14,16,20,0.74))",
+                }}
+              >
+                <div className="font-display italic text-[30px] leading-none text-[var(--cream)]">
+                  {d.leader.photoName}
+                </div>
+                <div className="mt-2 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[rgba(244,241,234,0.82)]">
+                  {d.leader.role}
+                </div>
+              </div>
             </div>
             <div>
               <h2 className="font-display italic font-normal text-[clamp(40px,5vw,76px)] leading-[0.95] tracking-[-0.025em] max-w-[12ch]">
@@ -450,26 +360,26 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
                 {d.projection.body}
               </p>
             </div>
-            <div
-              className="relative aspect-square border border-[var(--border)]"
-              style={{
-                background:
-                  "radial-gradient(circle at 30% 38%, rgba(200,50,31,0.14), transparent 45%), radial-gradient(circle at 28% 72%, rgba(30,58,138,0.12), transparent 50%), var(--cream-3)",
-              }}
-            >
-              <span className="absolute inset-5 border border-[rgba(14,16,20,0.12)] pointer-events-none" />
-              <span className="absolute top-8 left-8 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
-                LAT · 4.7110 N
-              </span>
-              <span className="absolute bottom-8 right-8 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
-                LON · 74.0721 W
-              </span>
-              <span
-                className="absolute border-l border-dashed border-[rgba(14,16,20,0.35)]"
-                style={{ left: "26%", top: "32%", width: "8%", height: "28%" }}
-              />
-              <MapPin tone="industrial" label="US" top="28%" left="24%" />
-              <MapPin tone="pharma" label="CO" top="58%" left="30%" />
+            <div className="border border-[var(--border)] bg-[var(--cream-3)] overflow-hidden">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] font-mono-g text-[10px] tracking-[0.16em] uppercase text-[var(--stone)]">
+                <span>{d.projection.frameworksKicker}</span>
+                <span className="text-[var(--ink)]">CO → US</span>
+              </div>
+              <div className="divide-y divide-[var(--border)]">
+                <FrameworkGroup
+                  label={d.projection.coLabel}
+                  tone="pharma"
+                  items={["INVIMA", "ICONTEC · NTC"]}
+                />
+                <FrameworkGroup
+                  label={d.projection.usLabel}
+                  tone="industrial"
+                  items={["FDA", "OSHA", "Retail"]}
+                />
+              </div>
+              <div className="px-6 py-4 border-t border-[var(--border)] font-mono-g text-[10px] tracking-[0.12em] uppercase text-[var(--stone)]">
+                {d.projection.frameworksNote}
+              </div>
             </div>
           </div>
         </section>
@@ -541,63 +451,6 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
         .btn-ghost-g:hover { color: var(--pharma); border-bottom-color: var(--pharma); }
       `}</style>
     </main>
-  );
-}
-
-function SectorCard({
-  tone,
-  tag,
-  title,
-  body,
-  metric,
-  photo,
-}: {
-  tone: "pharma" | "retail" | "industrial";
-  tag: string;
-  title: string;
-  body: string;
-  metric: string;
-  photo: string;
-}) {
-  const color = `var(--${tone})`;
-  const bg =
-    tone === "pharma"
-      ? "linear-gradient(135deg, rgba(200,50,31,0.14), rgba(200,50,31,0.02))"
-      : tone === "retail"
-        ? "linear-gradient(135deg, rgba(232,119,34,0.15), rgba(232,119,34,0.02))"
-        : "linear-gradient(135deg, rgba(30,58,138,0.14), rgba(30,58,138,0.02))";
-  return (
-    <article className="relative bg-[var(--cream-2)] border border-[var(--border)] flex flex-col gap-6 p-7 pt-8 pb-7 transition-transform duration-300 hover:-translate-y-1">
-      <div className="font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)] flex items-center gap-2.5">
-        <span
-          className="inline-block w-2.5 h-2.5"
-          style={{ background: color }}
-        />
-        {tag}
-      </div>
-      <div
-        className="relative aspect-[4/3] border border-[var(--border)] overflow-hidden"
-        style={{ background: bg }}
-      >
-        <span className="absolute inset-[18px] border border-[rgba(14,16,20,0.12)] pointer-events-none" />
-        <span className="absolute bottom-6 left-6 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
-          {photo}
-        </span>
-      </div>
-      <h3 className="font-display italic font-normal text-[34px] leading-none tracking-[-0.02em] text-[var(--ink)]">
-        {title}
-      </h3>
-      <p className="text-[14px] leading-[1.55] text-[var(--ink-2)]">{body}</p>
-      <div className="mt-auto pt-5 border-t border-[var(--border)] flex justify-between items-center font-mono-g text-[10px] tracking-[0.12em] uppercase text-[var(--stone)]">
-        <span
-          className="font-display italic text-[22px] not-mono"
-          style={{ color }}
-        >
-          {metric}
-        </span>
-        <span className="text-[18px] text-[var(--ink)]">→</span>
-      </div>
-    </article>
   );
 }
 
@@ -740,28 +593,32 @@ function ValCard({
   );
 }
 
-function MapPin({
-  tone,
+function FrameworkGroup({
   label,
-  top,
-  left,
+  tone,
+  items,
 }: {
-  tone: "pharma" | "industrial";
   label: string;
-  top: string;
-  left: string;
+  tone: "pharma" | "industrial";
+  items: string[];
 }) {
   const color = `var(--${tone})`;
   return (
-    <div
-      className="absolute flex flex-col items-center gap-1.5 font-mono-g text-[10px] tracking-[0.14em] uppercase"
-      style={{ top, left, color }}
-    >
-      <span
-        className="w-3 h-3 rounded-full"
-        style={{ background: color }}
-      />
-      <span>{label}</span>
+    <div className="px-6 py-5">
+      <div className="flex items-center gap-2.5 mb-3.5 font-mono-g text-[10px] tracking-[0.16em] uppercase text-[var(--stone)]">
+        <span className="inline-block w-2 h-2" style={{ background: color }} />
+        {label}
+      </div>
+      <ul className="flex flex-col gap-2">
+        {items.map((it) => (
+          <li
+            key={it}
+            className="font-display italic text-[24px] leading-none text-[var(--ink)]"
+          >
+            {it}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -124,6 +124,7 @@ export const es = {
         "Socio fundador y actual Gerente de Mercadeo. Su trayectoria atraviesa tres disciplinas — dirección creativa, desarrollo comercial y liderazgo operativo — una progresión poco común que hoy define el criterio editorial del estudio.",
       photoLabel: "Retrato · Socio fundador",
       photoName: "Óscar",
+      role: "Socio fundador · Gerente de Mercadeo",
       tl1Year: "2010 → 2015",
       tl1Role: "Director Creativo",
       tl1Tag: "Fundación",
@@ -198,6 +199,10 @@ export const es = {
       headingB: ".",
       body:
         "El cumplimiento regulatorio y el rigor operativo que ejercemos en Colombia son directamente transferibles a los requisitos FDA, OSHA y retail de Estados Unidos. Diseñamos para que el oficio cruce fronteras sin perder validez.",
+      frameworksKicker: "Marcos de referencia",
+      coLabel: "Colombia",
+      usLabel: "Estados Unidos",
+      frameworksNote: "Mismo criterio, distintas jurisdicciones.",
     },
     contact: {
       label: "Contacto",
@@ -402,6 +407,7 @@ export const en = {
         "Founding partner and current Marketing Director. His career spans three disciplines — creative direction, commercial development, and operational leadership — an uncommon progression that today defines the studio's editorial criterion.",
       photoLabel: "Portrait · Founding partner",
       photoName: "Óscar",
+      role: "Founding partner · Marketing Director",
       tl1Year: "2010 → 2015",
       tl1Role: "Creative Director",
       tl1Tag: "Founding",
@@ -476,6 +482,10 @@ export const en = {
       headingB: ".",
       body:
         "The regulatory compliance and operational rigor we exercise in Colombia transfer directly to FDA, OSHA, and US retail requirements. We design so the craft crosses borders without losing validity.",
+      frameworksKicker: "Reference frameworks",
+      coLabel: "Colombia",
+      usLabel: "United States",
+      frameworksNote: "Same standard, different jurisdictions.",
     },
     contact: {
       label: "Contact",

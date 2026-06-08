@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const SECTION_IDS = ["sectores", "liderazgo", "metodologia", "contacto"];
+const SECTION_IDS = ["liderazgo", "metodologia", "contacto"];
 
 export function useActiveSection() {
   const [active, setActive] = useState<string | null>(null);
@@ -33,16 +33,20 @@ export function useActiveSection() {
 }
 
 export function NavProgress({ progress }: { progress: number }) {
+  // Clip the progress bar to the capsule's pill shape so its ends follow the
+  // rounded corners instead of running straight across them.
   return (
     <div
-      className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full overflow-hidden"
+      className="pointer-events-none absolute inset-0 rounded-full overflow-hidden"
       style={{ opacity: progress > 0.02 ? 1 : 0, transition: "opacity 300ms" }}
+      aria-hidden
     >
       <div
-        className="h-full rounded-full"
+        className="absolute bottom-0 left-0 h-[2px]"
         style={{
           width: `${progress * 100}%`,
-          background: "linear-gradient(90deg, var(--pharma), var(--retail), var(--industrial))",
+          background:
+            "linear-gradient(90deg, var(--pharma), var(--retail), var(--industrial))",
           transition: "width 80ms linear",
         }}
       />

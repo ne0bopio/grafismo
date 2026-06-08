@@ -27,11 +27,6 @@ export function Footer({ lang, dict }: { lang: Lang; dict: Dict }) {
           </h4>
           <ul className="list-none grid gap-3">
             <li>
-              <Link href={`${home}#sectores`} className="text-[14px] opacity-85 hover:opacity-100 transition-opacity">
-                {dict.nav.sectors}
-              </Link>
-            </li>
-            <li>
               <Link href={projects} className="text-[14px] opacity-85 hover:opacity-100 transition-opacity">
                 {dict.nav.projects}
               </Link>
