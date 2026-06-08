@@ -3,11 +3,11 @@ import { notFound } from "next/navigation";
 import { CapsuleNav } from "@/components/CapsuleNav";
 import { Footer } from "@/components/Footer";
 import { ProjectCase } from "@/components/ProjectCase";
-import { getProject, getNextProject, projects } from "@/data/projects";
+import { getProject, getNextProject, publishedProjects } from "@/data/projects";
 import { es } from "@/lib/i18n";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return publishedProjects.map((p) => ({ slug: p.slug }));
 }
 
 type Params = Promise<{ slug: string }>;

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { projects } from "@/data/projects";
+import { publishedProjects as projects } from "@/data/projects";
 import { projectPath, homePath, contactHash } from "@/lib/routes";
 import type { Lang, Project, Sector } from "@/data/projects";
 import type { Dict } from "@/lib/i18n";

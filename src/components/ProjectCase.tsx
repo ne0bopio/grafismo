@@ -98,7 +98,7 @@ export function ProjectCase({
         className="max-w-[1440px] mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-y-6 border-t border-[var(--ink)] border-b border-[var(--border)]"
         style={{ padding: "32px max(5vw, 32px)" }}
       >
-        <MetaCell k={c.client} v={copy.title} first />
+        <MetaCell k={c.client} v={copy.client ?? copy.title} first />
         <MetaCell k={c.industry} v={copy.industry} />
         <MetaCell k={c.year} v={project.years} />
         <MetaCell k={c.role} v={c.roleVal} />

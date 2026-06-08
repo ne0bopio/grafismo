@@ -4,7 +4,7 @@ const logos = [
   { name: "Ethicon", style: "italic" as const },
   { name: "DePuy Synthes", style: "regular" as const },
   { name: "Cardinal Health", style: "regular" as const },
-  { name: "Johnson & Johnson", style: "regular" as const },
+  { name: "Aurobindo", style: "regular" as const },
   { name: "Symrise", style: "regular" as const },
 ];
 

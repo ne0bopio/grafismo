@@ -55,9 +55,10 @@ export const es = {
         "Una selección de trabajos en los que el oficio editorial, regulatorio y operativo se vuelve visible — desde laboratorios farmacéuticos hasta señalética corporativa.",
       cta: "Ver caso",
       ctaAll: "Ver todos los proyectos",
-      jjOutcome: "Sistema editorial unificado adoptado por todas las áreas internas — producción más rápida, marca más consistente.",
+      jjOutcome: "Simuladores anatómicos funcionales para el entrenamiento quirúrgico Ethicon — soluciones reales donde no existían referentes.",
       cardinalOutcome: "Materiales clínicos validados por especialistas — diseño como instrumento de lectura, no como decoración.",
       terranumOutcome: "Wayfinding corporativo legible de un vistazo — sistema sostenible que se mantiene y se expande sin perder coherencia.",
+      horowitzOutcome: "Rebranding e instalación de fachada en Nueva Jersey — identidad más fuerte y mejor visibilidad comercial, de día y de noche.",
     },
     mensaje: {
       label: "Enfoque",
@@ -231,7 +232,7 @@ export const es = {
   projects: {
     eyebrowNum: "PROYECTOS / 001",
     eyebrowTag: "Casos seleccionados",
-    eyebrowCount: "07 proyectos",
+    eyebrowCount: "09 proyectos",
     headingA: "Clientes que ",
     headingEm: "nos confiaron",
     headingB: " el oficio.",
@@ -335,9 +336,10 @@ export const en = {
         "A selection of work where the editorial, regulatory, and operational craft becomes visible — from pharmaceutical labs to corporate signage.",
       cta: "View case",
       ctaAll: "View all projects",
-      jjOutcome: "Unified editorial system adopted across all internal verticals — faster production, more consistent brand.",
+      jjOutcome: "Functional anatomical simulators for Ethicon surgical training — real solutions where no precedent existed.",
       cardinalOutcome: "Clinical materials validated by specialists — design as a reading instrument, not decoration.",
       terranumOutcome: "Corporate wayfinding readable at a glance — a sustainable system that's maintained and expanded without losing coherence.",
+      horowitzOutcome: "Storefront rebrand and signage installation in New Jersey — a stronger identity and better commercial visibility, day and night.",
     },
     mensaje: {
       label: "Approach",
@@ -508,7 +510,7 @@ export const en = {
   projects: {
     eyebrowNum: "PROJECTS / 001",
     eyebrowTag: "Selected cases",
-    eyebrowCount: "07 projects",
+    eyebrowCount: "09 projects",
     headingA: "Clients who ",
     headingEm: "trusted us",
     headingB: " with the craft.",

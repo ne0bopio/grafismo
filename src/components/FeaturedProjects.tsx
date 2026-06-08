@@ -13,10 +13,11 @@ const sectorColor: Record<Sector, string> = {
   public: "var(--ink)",
 };
 
-const outcomeKeyBySlug: Record<string, "jjOutcome" | "cardinalOutcome" | "terranumOutcome"> = {
+const outcomeKeyBySlug: Record<string, "jjOutcome" | "cardinalOutcome" | "terranumOutcome" | "horowitzOutcome"> = {
   "johnson-johnson": "jjOutcome",
   "cardinal-health": "cardinalOutcome",
   terranum: "terranumOutcome",
+  "horowitz-pharmacy": "horowitzOutcome",
 };
 
 export function FeaturedProjects({ lang, dict }: { lang: Lang; dict: Dict }) {

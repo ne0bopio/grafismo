@@ -3,6 +3,8 @@ export type Lang = "es" | "en";
 
 export type ProjectCopy = {
   title: string;
+  /** Optional override for the "Client" meta cell when the case is multi-client. Falls back to title. */
+  client?: string;
   industry: string;
   deck: string;
   challengeTitle: string;
@@ -25,6 +27,8 @@ export type Project = {
   metric: string;
   coverImage: string;
   galleryImages: string[];
+  /** When true, the project is hidden from listings, routes, and the next-project chain. */
+  draft?: boolean;
   es: ProjectCopy;
   en: ProjectCopy;
 };
@@ -35,80 +39,76 @@ export const projects: Project[] = [
     number: "PRJ—01",
     sector: "pharma",
     years: "2023 — 2024",
-    metric: "Sistema unificado",
+    metric: "Sin referentes",
     coverImage: "/images/projects/johnson-johnson/cover.jpg",
     galleryImages: [
       "/images/projects/johnson-johnson/gallery-01.jpg",
       "/images/projects/johnson-johnson/gallery-02.jpg",
       "/images/projects/johnson-johnson/gallery-03.jpg",
-      "/images/projects/johnson-johnson/gallery-04.jpg",
-      "/images/projects/johnson-johnson/gallery-05.jpg",
     ],
     es: {
-      title: "Johnson & Johnson",
-      industry: "Bienestar corporativo · Farmacéutico",
+      title: "Ethicon",
+      industry: "Simuladores anatómicos · J&J",
       deck:
-        "Programa de bienestar corporativo — sistema visual unificado para campañas internas de salud, prevención y comunicación a colaboradores.",
-      challengeTitle: "Comunicar salud sin fragmentar la marca.",
+        "Desarrollo de simuladores anatómicos y soluciones visuales aplicadas al entrenamiento quirúrgico, la validación de dispositivos médicos y la comunicación especializada para la línea Ethicon de Johnson & Johnson.",
+      challengeTitle: "Un reto sin proveedores disponibles.",
       challenge: [
-        "Cada línea de bienestar corporativo usaba su propio lenguaje visual. Resultado: piezas inconsistentes, baja recordación, y fricción operativa al producir materiales nuevos.",
-        "El reto: construir un sistema que cualquier área pudiera adoptar sin comprometer el estándar visual de J&J.",
+        "El proyecto surgió ante la necesidad de desarrollar simuladores anatómicos funcionales para entrenamiento médico especializado. En ese momento no existían proveedores capaces de producir este tipo de soluciones a nivel local ni internacional bajo las especificaciones requeridas para pruebas clínicas y entrenamiento técnico.",
+        "El desafío implicó investigar materiales, desarrollar geometrías anatómicas funcionales y traducir conceptos médicos complejos en estructuras físicas capaces de soportar procesos de sutura, corte y validación de dispositivos quirúrgicos.",
       ],
-      approachTitle: "Un sistema que escala, no un kit de piezas.",
+      approachTitle: "Diseño anatómico y exploración material.",
       approach: [
-        "Definimos un sistema editorial con jerarquía tipográfica, plantillas adaptables y guías de uso para equipos internos.",
-        "Cada pieza nueva parte de un molde — no se rediseña desde cero. El tiempo de producción cayó, la consistencia subió.",
+        "Se desarrollaron simuladores anatómicos en espuma y gel para representar órganos como corazón, pulmón, riñón e intestinos, con materiales capaces de replicar elasticidad, densidad y comportamiento superficial similares al tejido biológico.",
+        "El proceso incluyó conceptualización visual, corte, producción, validación física y adaptación funcional para distintos escenarios de entrenamiento clínico.",
+        "Los simuladores se utilizaron en formación médica, entrenamiento quirúrgico y validación de dispositivos de sutura y sellado de la línea Ethicon, con soporte adicional en comunicación visual y piezas para los programas de entrenamiento de Johnson & Johnson.",
       ],
-      metricLabel: "Resultado · Sistema unificado",
-      metricStatement: "Un único sistema, adoptado por todas las áreas.",
+      metricLabel: "Resultado · Sin referentes",
+      metricStatement: "Soluciones funcionales donde no existían referentes.",
       metricBody:
-        "Plantillas, tipografía y jerarquía visual auditables. Producción más rápida, marca más consistente, comunicación interna alineada.",
-      cover: "Imagen principal · J&J",
+        "Se desarrollaron soluciones anatómicas funcionales para entrenamiento médico especializado en un contexto sin proveedores capaces de cumplir los requerimientos técnicos. Las piezas facilitaron procesos de validación, entrenamiento y comunicación clínica para la línea Ethicon.",
+      cover: "Entrenamiento quirúrgico · Ethicon",
       gallery: [
-        "Imagen · Campaña salud",
-        "Imagen · Plantilla editorial",
-        "Imagen · Pieza interna",
-        "Imagen · Guía de uso",
-        "Imagen · Aplicación corporativa",
+        "Simuladores anatómicos en espuma",
+        "Modelo anatómico · vista frontal",
+        "Modelo pulmonar · detalle",
       ],
       credits: [
         { key: "Dirección", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Diseño", value: "Equipo editorial · Grafismo" },
-        { key: "Validación", value: "Comunicaciones internas J&J" },
+        { key: "Desarrollo de producto", value: "Equipo Grafismo" },
+        { key: "Validación clínica", value: "Equipo médico · Ethicon / J&J" },
         { key: "Producción", value: "Proveedores homologados · CO" },
       ],
     },
     en: {
-      title: "Johnson & Johnson",
-      industry: "Corporate Wellbeing · Pharmaceutical",
+      title: "Ethicon",
+      industry: "Anatomical simulators · J&J",
       deck:
-        "Corporate wellbeing program — unified visual system for internal health, prevention, and employee communication campaigns.",
-      challengeTitle: "Communicating health without fragmenting the brand.",
+        "Development of anatomical simulators and visual solutions applied to surgical training, medical-device validation, and specialized communication for Johnson & Johnson's Ethicon line.",
+      challengeTitle: "A brief with no available suppliers.",
       challenge: [
-        "Each wellbeing vertical had its own visual language. The result: inconsistent pieces, low recall, and operational friction producing new materials.",
-        "The brief: build a system any internal team could adopt without compromising J&J's visual standard.",
+        "The project emerged from the need to develop functional anatomical simulators for specialized medical training. At the time, no suppliers — local or international — could produce this kind of solution under the specifications required for clinical testing and technical training.",
+        "The challenge meant researching materials, developing functional anatomical geometries, and translating complex medical concepts into physical structures able to withstand suturing, cutting, and surgical-device validation.",
       ],
-      approachTitle: "A system that scales — not a collection of assets.",
+      approachTitle: "Anatomical design and material exploration.",
       approach: [
-        "We defined an editorial system with typographic hierarchy, adaptable templates, and usage guidelines for internal teams.",
-        "Every new piece starts from a mold — never from scratch. Production time dropped, consistency rose.",
+        "We developed foam and gel anatomical simulators representing organs such as the heart, lung, kidney, and intestines, using materials that replicate elasticity, density, and surface behavior close to biological tissue.",
+        "The process spanned visual conceptualization, cutting, production, physical validation, and functional adaptation for different clinical training scenarios.",
+        "The simulators were used in medical education, surgical training, and validation of Ethicon suturing and sealing devices — alongside visual communication support and pieces for Johnson & Johnson training programs.",
       ],
-      metricLabel: "Result · Unified system",
-      metricStatement: "A single system, adopted across all verticals.",
+      metricLabel: "Result · No precedent",
+      metricStatement: "Functional solutions where none existed.",
       metricBody:
-        "Auditable templates, typography, and visual hierarchy. Faster production, more consistent brand, aligned internal communication.",
-      cover: "Hero image · J&J",
+        "Functional anatomical solutions delivered for specialized medical training in a context with no suppliers able to meet the technical requirements. The pieces enabled validation, training, and clinical communication for the Ethicon line.",
+      cover: "Surgical training · Ethicon",
       gallery: [
-        "Image · Health campaign",
-        "Image · Editorial template",
-        "Image · Internal piece",
-        "Image · Usage guide",
-        "Image · Corporate application",
+        "Anatomical foam simulators",
+        "Anatomical model · front view",
+        "Lung model · detail",
       ],
       credits: [
         { key: "Direction", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Design", value: "Editorial team · Grafismo" },
-        { key: "Validation", value: "J&J internal comms" },
+        { key: "Product development", value: "Grafismo team" },
+        { key: "Clinical validation", value: "Medical team · Ethicon / J&J" },
         { key: "Production", value: "Certified vendors · CO" },
       ],
     },
@@ -529,8 +529,169 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "gobernacion",
+    slug: "horowitz-pharmacy",
     number: "PRJ—07",
+    sector: "corporate",
+    years: "2024",
+    metric: "NJ · USA",
+    coverImage: "/images/projects/horowitz-pharmacy/cover.jpg",
+    galleryImages: [
+      "/images/projects/horowitz-pharmacy/gallery-01.jpg",
+      "/images/projects/horowitz-pharmacy/gallery-02.jpg",
+      "/images/projects/horowitz-pharmacy/gallery-03.jpg",
+    ],
+    es: {
+      title: "Horowitz Pharmacy",
+      industry: "Señalización comercial · NJ, USA",
+      deck:
+        "Transformación visual completa de la fachada de Horowitz Pharmacy en Nueva Jersey: rediseño de la señalización para mejorar la visibilidad desde la calle, modernizar la percepción de marca y construir una presencia comercial más fuerte en un entorno urbano de alto tráfico.",
+      challengeTitle: "Una fachada sin jerarquía ni visibilidad.",
+      challenge: [
+        "La señalización anterior carecía de jerarquía, consistencia y legibilidad a distancia. El local necesitaba destacar en una calle de alto tráfico y proyectar una identidad más profesional.",
+        "El reto: rediseñar la señalización principal de fachada con mayor impacto visual, legible de día y de noche, y planificar su producción e instalación en condiciones reales.",
+      ],
+      approachTitle: "Diseño, visualización e instalación.",
+      approach: [
+        "Exploramos un sistema de doble aviso para maximizar la visibilidad desde varios ángulos y desarrollamos un render arquitectónico realista para validar el impacto comercial antes de producir.",
+        "La paleta azul marino y dorado se eligió para comunicar profesionalismo, confianza y posicionamiento premium, con tipografía y contraste optimizados para lectura a distancia.",
+        "La producción en gran formato usó materiales exteriores de alta durabilidad. La instalación incluyó la remoción del aviso anterior, preparación de fachada, integración eléctrica y montaje del sistema iluminado.",
+      ],
+      metricLabel: "Resultado · NJ, USA",
+      metricStatement: "Identidad moderna. Mayor presencia. Mejor visibilidad.",
+      metricBody:
+        "La nueva fachada logró una identidad visual más fuerte, mejor visibilidad comercial y una presencia más profesional en la calle — combinando diseño, visualización, producción e instalación en una solución integral de gráfica ambiental.",
+      cover: "Aviso iluminado · resultado final",
+      gallery: [
+        "Aviso anterior · antes",
+        "Instalación en fachada",
+        "Resultado nocturno iluminado",
+      ],
+      credits: [
+        { key: "Dirección", value: "Óscar · Grafismo Comunicaciones" },
+        { key: "Diseño & visualización", value: "Equipo Grafismo" },
+        { key: "Producción gran formato", value: "Grafismo · NJ, USA" },
+        { key: "Instalación", value: "Equipo en sitio · NJ, USA" },
+      ],
+    },
+    en: {
+      title: "Horowitz Pharmacy",
+      industry: "Storefront signage · NJ, USA",
+      deck:
+        "A complete storefront transformation for Horowitz Pharmacy in New Jersey: redesign of the façade signage to improve street visibility, modernize brand perception, and build a stronger commercial presence in a high-traffic urban environment.",
+      challengeTitle: "A façade with no hierarchy or visibility.",
+      challenge: [
+        "The previous signage lacked hierarchy, consistency, and long-distance readability. The storefront needed to stand out on a high-traffic street and project a more professional identity.",
+        "The brief: redesign the main façade signage for stronger visual impact — readable day and night — and plan its production and installation under real-world conditions.",
+      ],
+      approachTitle: "Design, visualization, and installation.",
+      approach: [
+        "We explored a dual-signage system to maximize visibility from multiple street angles and developed a realistic architectural render to validate commercial impact before production.",
+        "A navy-blue and gold palette was chosen to communicate professionalism, trust, and premium positioning, with typography and contrast optimized for distance reading.",
+        "Large-format production used durable exterior materials. Installation included removing the old sign, façade preparation, electrical integration, and mounting the new illuminated system.",
+      ],
+      metricLabel: "Result · NJ, USA",
+      metricStatement: "Modern identity. Stronger presence. Better visibility.",
+      metricBody:
+        "The new façade achieved a stronger visual identity, improved commercial visibility, and a more professional street presence — combining design, visualization, production, and installation into a complete environmental-graphics solution.",
+      cover: "Illuminated sign · final result",
+      gallery: [
+        "Previous sign · before",
+        "Façade installation",
+        "Illuminated night result",
+      ],
+      credits: [
+        { key: "Direction", value: "Óscar · Grafismo Comunicaciones" },
+        { key: "Design & visualization", value: "Grafismo team" },
+        { key: "Large-format production", value: "Grafismo · NJ, USA" },
+        { key: "Installation", value: "On-site team · NJ, USA" },
+      ],
+    },
+  },
+  {
+    slug: "regulatory-packaging",
+    number: "PRJ—08",
+    sector: "pharma",
+    years: "2021 — 2025",
+    metric: "LatAm",
+    coverImage: "/images/projects/regulatory-packaging/cover.jpg",
+    galleryImages: [
+      "/images/projects/regulatory-packaging/gallery-01.jpg",
+      "/images/projects/regulatory-packaging/gallery-02.jpg",
+      "/images/projects/regulatory-packaging/gallery-03.jpg",
+    ],
+    es: {
+      title: "Empaques & Artes Regulatorios",
+      client: "Multi-cliente · LatAm",
+      industry: "Farmacéutico · LatAm",
+      deck:
+        "Sistemas completos de empaque farmacéutico y artes regulatorios para clientes de Latinoamérica: cajas plegadizas, insertos, etiquetas y roll labels desarrollados con precisión técnica, control de versiones y cumplimiento normativo — listos para producción industrial.",
+      challengeTitle: "Precisión para mercados regulados.",
+      challenge: [
+        "El empaque farmacéutico no admite errores: cada pieza debe cumplir lineamientos regulatorios y sanitarios, sostener jerarquías de información críticas y ser compatible con procesos industriales de impresión.",
+        "El hilo común de estos proyectos —Aurobindo, Proclin, Vesalius, Eurociencia— fue traducir requerimientos técnicos y normativos en artes finales consistentes, sin sacrificar claridad visual ni tiempos de producción.",
+      ],
+      approachTitle: "Del brief técnico al archivo listo para imprenta.",
+      approach: [
+        "Desarrollamos sistemas gráficos completos: estructura de empaque, diagramación regulatoria, insertos y prospectos de alta densidad técnica, y etiquetas autoadhesivas / roll labels con sus sistemas de codificación.",
+        "Cada arte pasa por control de calidad —dimensiones, tipografía, códigos, variables, Pantones y barniz— antes de entregar archivos optimizados para flexografía y offset.",
+        "El sistema reduce errores, mantiene la consistencia entre lotes y entrega artes maestros versionados, listos para producción real.",
+      ],
+      metricLabel: "Alcance · LatAm",
+      metricStatement: "Precisión. Cumplimiento. Healthcare.",
+      metricBody:
+        "Sistemas gráficos para cartones farmacéuticos, inyectables, suspensiones orales, roll labels e insertos médicos — desarrollados con estándar técnico y entregados listos para producción industrial.",
+      cover: "Validación de arte regulatorio",
+      gallery: [
+        "Portafolio de empaques farmacéuticos",
+        "Especificación de etiqueta · roll label",
+        "Troquel estructural · caja plegadiza",
+      ],
+      credits: [
+        { key: "Dirección", value: "Óscar · Grafismo Comunicaciones" },
+        { key: "Diseño regulatorio", value: "Equipo Grafismo" },
+        { key: "Clientes", value: "Aurobindo · Proclin · Vesalius · Eurociencia" },
+        { key: "Producción", value: "Flexografía / offset · proveedores homologados" },
+      ],
+    },
+    en: {
+      title: "Regulatory Packaging Systems",
+      client: "Multiple clients · LatAm",
+      industry: "Pharmaceutical · LatAm",
+      deck:
+        "Complete pharmaceutical packaging and regulatory artwork systems for Latin American clients: folding cartons, inserts, labels, and roll labels developed with technical precision, version control, and regulatory compliance — ready for industrial production.",
+      challengeTitle: "Precision for regulated markets.",
+      challenge: [
+        "Pharmaceutical packaging allows no errors: every piece must meet regulatory and health requirements, hold critical information hierarchies, and stay compatible with industrial printing processes.",
+        "The common thread across these projects — Aurobindo, Proclin, Vesalius, Eurociencia — was translating technical and regulatory requirements into consistent print-ready artwork, without sacrificing visual clarity or production timelines.",
+      ],
+      approachTitle: "From technical brief to print-ready file.",
+      approach: [
+        "We develop complete graphic systems: packaging structure, regulatory layout, high-density medical inserts and leaflets, and self-adhesive labels / roll labels with their coding systems.",
+        "Every artwork passes quality control — dimensions, typography, codes, variables, Pantones, and varnish — before delivering files optimized for flexography and offset.",
+        "The system reduces errors, keeps consistency across batches, and delivers versioned master artworks, ready for real production.",
+      ],
+      metricLabel: "Reach · LatAm",
+      metricStatement: "Precision. Compliance. Healthcare.",
+      metricBody:
+        "Graphic systems for pharmaceutical cartons, injectables, oral suspensions, roll labels, and medical inserts — built to technical standard and delivered ready for industrial production.",
+      cover: "Regulatory artwork validation",
+      gallery: [
+        "Pharmaceutical packaging portfolio",
+        "Label specification · roll label",
+        "Structural dieline · folding carton",
+      ],
+      credits: [
+        { key: "Direction", value: "Óscar · Grafismo Comunicaciones" },
+        { key: "Regulatory design", value: "Grafismo team" },
+        { key: "Clients", value: "Aurobindo · Proclin · Vesalius · Eurociencia" },
+        { key: "Production", value: "Flexography / offset · certified vendors" },
+      ],
+    },
+  },
+  {
+    slug: "gobernacion",
+    number: "PRJ—09",
+    draft: true,
     sector: "public",
     years: "2020 — 2022",
     metric: "Impacto comunitario",
@@ -607,19 +768,22 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredSlugs = ["johnson-johnson", "cardinal-health", "terranum"] as const;
+export const featuredSlugs = ["johnson-johnson", "cardinal-health", "horowitz-pharmacy"] as const;
+
+/** Projects visible on the public site (drafts excluded). Use this for listings, routes, and chaining. */
+export const publishedProjects: Project[] = projects.filter((p) => !p.draft);
 
 export function getFeaturedProjects(): Project[] {
   return featuredSlugs
-    .map((slug) => projects.find((p) => p.slug === slug))
+    .map((slug) => publishedProjects.find((p) => p.slug === slug))
     .filter((p): p is Project => Boolean(p));
 }
 
 export function getProject(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  return publishedProjects.find((p) => p.slug === slug);
 }
 
 export function getNextProject(slug: string): Project {
-  const i = projects.findIndex((p) => p.slug === slug);
-  return projects[(i + 1) % projects.length];
+  const i = publishedProjects.findIndex((p) => p.slug === slug);
+  return publishedProjects[(i + 1) % publishedProjects.length];
 }
