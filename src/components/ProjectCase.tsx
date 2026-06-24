@@ -82,15 +82,6 @@ export function ProjectCase({
             />
           )}
           <span className="absolute inset-6 border border-[rgba(14,16,20,0.14)] pointer-events-none" />
-          <span
-            className="absolute top-10 right-10 font-mono-g text-[10px] tracking-[0.14em] uppercase backdrop-blur-md px-2.5 py-1.5 border"
-            style={{ background: "rgba(14,16,20,0.65)", color: "rgba(244,241,234,0.9)", borderColor: "rgba(244,241,234,0.15)" }}
-          >
-            Cover · 01
-          </span>
-          <span className="absolute left-10 bottom-10 font-mono-g text-[11px] tracking-[0.14em] uppercase backdrop-blur-md px-2 py-1" style={{ color: "rgba(244,241,234,0.9)", background: "rgba(14,16,20,0.55)" }}>
-            {copy.cover}
-          </span>
         </div>
       </section>
 
@@ -132,7 +123,6 @@ export function ProjectCase({
                 key={i}
                 label={label}
                 index={i}
-                total={copy.gallery.length}
                 tone={project.sector}
                 imageSrc={project.galleryImages[i]}
               />
@@ -293,41 +283,39 @@ function BriefCol({
 function GalleryTile({
   label,
   index,
-  total,
   tone,
   imageSrc,
 }: {
   label: string;
   index: number;
-  total: number;
   tone: "pharma" | "retail" | "corporate" | "public";
   imageSrc?: string;
 }) {
   const bg = sectorBg(tone);
-  const span =
+  const colSpan = index === 0 ? "md:col-span-8" : "md:col-span-4";
+  const aspect =
     index === 0
-      ? "md:col-span-8 aspect-[16/9]"
+      ? "aspect-[16/9]"
       : index === 1
-        ? "md:col-span-4 aspect-[3/4]"
-        : "md:col-span-4 aspect-[4/3]";
+        ? "aspect-[3/4]"
+        : "aspect-[4/3]";
   return (
-    <div
-      className={`relative col-span-1 sm:col-span-2 ${span} border border-[var(--border)] overflow-hidden`}
-      style={{ background: bg }}
-    >
-      {imageSrc && (
-        <img
-          src={imageSrc}
-          alt={label}
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-        />
-      )}
-      <span className="absolute inset-[18px] border border-[rgba(14,16,20,0.12)] pointer-events-none" />
-      <span className="absolute top-6 right-6 font-mono-g text-[10px] backdrop-blur-md px-1.5 py-1 border" style={{ background: "rgba(14,16,20,0.65)", color: "rgba(244,241,234,0.9)", borderColor: "rgba(244,241,234,0.15)" }}>
-        {(index + 1).toString().padStart(2, "0")} / {total.toString().padStart(2, "0")}
-      </span>
-      <span className="absolute left-6 bottom-6 font-mono-g text-[10px] tracking-[0.14em] uppercase backdrop-blur-md px-1.5 py-1 border" style={{ background: "rgba(14,16,20,0.65)", color: "rgba(244,241,234,0.9)", borderColor: "rgba(244,241,234,0.15)" }}>
+    <div className={`col-span-1 sm:col-span-2 ${colSpan} flex flex-col gap-3`}>
+      <div
+        className={`relative ${aspect} border border-[var(--border)] overflow-hidden`}
+        style={{ background: bg }}
+      >
+        {imageSrc && (
+          <img
+            src={imageSrc}
+            alt={label}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+        )}
+        <span className="absolute inset-[18px] border border-[rgba(14,16,20,0.12)] pointer-events-none" />
+      </div>
+      <span className="font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
         {label}
       </span>
     </div>

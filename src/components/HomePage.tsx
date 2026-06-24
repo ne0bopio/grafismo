@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SectionHead } from "./SectionHead";
 import { MethodSteps } from "./MethodSteps";
-import { HeroPhotoGrid } from "./HeroPhotoGrid";
+import { HeroShowcase } from "./HeroShowcase";
 import { ClientLogoStrip } from "./ClientLogoStrip";
 import { FeaturedProjects } from "./FeaturedProjects";
 import { projectsPath } from "@/lib/routes";
@@ -37,7 +37,7 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
           <span>{d.eyebrow.location}</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-start mt-10 lg:mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.15fr] gap-10 lg:gap-14 items-center mt-10 lg:mt-12">
           <div className="flex flex-col gap-10">
             <h1
               className="font-display italic font-normal text-[clamp(46px,6.4vw,108px)] leading-[0.94] tracking-[-0.03em] max-w-[14ch]"
@@ -103,7 +103,7 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
             className="relative w-full rise"
             style={{ animationDelay: "0.6s" }}
           >
-            <HeroPhotoGrid lang={lang} />
+            <HeroShowcase lang={lang} />
           </div>
         </div>
 

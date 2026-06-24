@@ -95,19 +95,19 @@ function FeaturedCard({
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
         )}
-        <span className="absolute top-4 left-4 inline-flex items-center gap-2 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--ink)] bg-[rgba(250,248,242,0.88)] backdrop-blur-sm px-2.5 py-1.5 border border-[var(--border)]">
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <span
+          className="inline-flex items-center gap-2 font-mono-g text-[10.5px] font-medium tracking-[0.14em] uppercase"
+          style={{ color: swatch }}
+        >
           <span
             className="inline-block w-1.5 h-1.5"
             style={{ background: swatch }}
           />
           {copy.industry}
         </span>
-        <span className="absolute top-4 right-4 font-mono-g text-[10px] tracking-[0.12em] text-[var(--ink)] bg-[rgba(250,248,242,0.88)] backdrop-blur-sm px-2 py-1.5 border border-[var(--border)]">
-          {p.number}
-        </span>
-      </div>
-
-      <div className="flex flex-col gap-3">
         <h3
           className="font-display italic font-normal text-[clamp(28px,2.6vw,38px)] leading-[1] tracking-[-0.02em] text-[var(--ink)]"
         >
@@ -124,7 +124,7 @@ function FeaturedCard({
             </span>
           </span>
           <span className="font-mono-g text-[10px] tracking-[0.12em] text-[var(--stone)]">
-            {p.years}
+            {p.number} · {p.years}
           </span>
         </div>
       </div>

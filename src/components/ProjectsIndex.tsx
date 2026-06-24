@@ -176,14 +176,6 @@ function ProjectCard({
         : tone === "corporate"
           ? "linear-gradient(135deg, rgba(30,58,138,0.14), rgba(30,58,138,0.02))"
           : "linear-gradient(135deg, rgba(14,16,20,0.12), rgba(14,16,20,0.02))";
-  const swatch =
-    tone === "pharma"
-      ? "var(--pharma)"
-      : tone === "retail"
-        ? "var(--retail)"
-        : tone === "corporate"
-          ? "var(--industrial)"
-          : "var(--ink)";
   const industryColor =
     tone === "pharma"
       ? "var(--pharma)"
@@ -211,22 +203,6 @@ function ProjectCard({
           />
         )}
         <span className="absolute inset-[18px] border border-[rgba(14,16,20,0.12)] pointer-events-none group-hover:border-[rgba(14,16,20,0.28)] transition-colors duration-300" />
-        <span
-          className="absolute top-7 left-7 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)] backdrop-blur-sm px-2.5 py-1.5 border border-[var(--border)] flex items-center gap-2"
-          style={{ background: "rgba(250,248,242,0.82)" }}
-        >
-          <span
-            className="inline-block w-2 h-2"
-            style={{ background: swatch }}
-          />
-          {copy.industry}
-        </span>
-        <span className="absolute top-7 right-7 font-mono-g text-[10px] tracking-[0.12em] text-[var(--stone)]">
-          {p.number}
-        </span>
-        <span className="absolute left-8 bottom-8 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
-          {copy.cover}
-        </span>
       </div>
       <div
         className={`flex flex-col gap-3 ${isFeatured ? "md:flex-[1] md:py-6 md:gap-7" : ""}`}
@@ -255,7 +231,7 @@ function ProjectCard({
             </span>
           </span>
           <span className="font-mono-g text-[10px] tracking-[0.12em] text-[var(--stone)]">
-            {p.years}
+            {p.number} · {p.years}
           </span>
         </div>
       </div>

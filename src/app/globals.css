@@ -114,6 +114,24 @@ img, svg { display: block; max-width: 100%; }
   animation: rise 1s cubic-bezier(.2,.7,.2,1) forwards;
 }
 
+/* ---------- Hero showcase ---------- */
+@keyframes hero-kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+.hero-kenburns {
+  animation: hero-kenburns 5600ms linear forwards;
+}
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.hero-progress {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: hero-progress 5000ms linear forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
