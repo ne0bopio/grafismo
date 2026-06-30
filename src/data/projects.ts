@@ -19,6 +19,24 @@ export type ProjectCopy = {
   credits: { key: string; value: string }[];
 };
 
+/** Bilingual string pair used inside editorial story blocks. */
+export type L = { es: string; en: string };
+
+/** One image inside a story grid, with a bilingual caption and an optional column span (out of 12). */
+export type StoryImage = { src: string; caption: L; span?: number; ratio?: string };
+
+/**
+ * Editorial "case-story" blocks — the photo-led spread Óscar asked for
+ * ("imágenes que hablen por sí solas"). A project that defines `story`
+ * renders this in place of the generic gallery tiles.
+ */
+export type StoryBlock =
+  | { kind: "intro"; eyebrow: L; title: L; lead: L; services: { es: string[]; en: string[] } }
+  | { kind: "chapter"; index: string; eyebrow: L; title: L; lead: L }
+  | { kind: "feature"; src: string; ratio?: string; caption: L; contain?: boolean }
+  | { kind: "split"; src: string; ratio?: string; title: L; body: L; caption?: L; flip?: boolean; contain?: boolean }
+  | { kind: "grid"; images: StoryImage[] };
+
 export type Project = {
   slug: string;
   number: string;
@@ -29,6 +47,8 @@ export type Project = {
   galleryImages: string[];
   /** When true, the project is hidden from listings, routes, and the next-project chain. */
   draft?: boolean;
+  /** Optional editorial spread. When present it replaces the generic gallery section. */
+  story?: StoryBlock[];
   es: ProjectCopy;
   en: ProjectCopy;
 };
@@ -126,6 +146,186 @@ export const projects: Project[] = [
       "/images/projects/cardinal-health/gallery-03.jpg",
       "/images/projects/cardinal-health/gallery-04.jpg",
       "/images/projects/cardinal-health/gallery-05.jpg",
+    ],
+    story: [
+      {
+        kind: "intro",
+        eyebrow: { es: "Sistema de comunicación · Cardinal Health", en: "Communication system · Cardinal Health" },
+        title: {
+          es: "Un sistema que traduce lo clínico sin diluirlo.",
+          en: "A system that translates the clinical without diluting it.",
+        },
+        lead: {
+          es: "Sistema integral de comunicación visual para divisiones médicas de Cardinal Health: diseño editorial, comunicación de producto, campañas de concientización y materiales de producción listos para implementación real.",
+          en: "An integrated visual communication system for Cardinal Health's medical divisions: editorial design, product communication, awareness campaigns, and production-ready materials built for real-world implementation.",
+        },
+        services: {
+          es: [
+            "Sistemas de marca",
+            "Comunicación healthcare",
+            "Diseño editorial",
+            "Producción impresa",
+            "Material corporativo",
+            "Eventos & trade marketing",
+            "Gráfica POP & stand",
+            "Comunicación de producto médico",
+            "Desarrollo de campañas",
+            "Adaptación a redes sociales",
+            "Supervisión de producción",
+          ],
+          en: [
+            "Branding systems",
+            "Healthcare communication",
+            "Editorial design",
+            "Print production",
+            "Corporate materials",
+            "Event & trade marketing",
+            "POP & booth graphics",
+            "Medical product communication",
+            "Campaign development",
+            "Social media adaptation",
+            "Production supervision",
+          ],
+        },
+      },
+      {
+        kind: "chapter",
+        index: "01",
+        eyebrow: { es: "Comunicación de producto", en: "Product communication" },
+        title: {
+          es: "Información clínica que se lee de un vistazo.",
+          en: "Clinical information you read at a glance.",
+        },
+        lead: {
+          es: "Sistemas editoriales para comunicación de producto healthcare: folletos técnicos, sistemas de información de cuidado de heridas y layouts de presentación con jerarquía clara y estética farmacéutica premium.",
+          en: "Editorial systems for healthcare product communication: technical brochures, wound-care information systems, and presentation layouts with clear hierarchy and a premium pharmaceutical aesthetic.",
+        },
+      },
+      {
+        kind: "split",
+        src: "/images/projects/cardinal-health/story/accordion-spread.jpg",
+        ratio: "3 / 1",
+        contain: true,
+        title: {
+          es: "Folleto acordeón · cuidado de heridas",
+          en: "Accordion brochure · wound care",
+        },
+        body: {
+          es: "Folleto editorial multipanel para control de infección y manejo avanzado de heridas, con jerarquía de información codificada por color y especificaciones listas para impresión industrial.",
+          en: "A multi-panel editorial brochure for infection control and advanced wound management, with color-coded information hierarchy and specifications ready for industrial print.",
+        },
+        caption: {
+          es: "Sistema acordeón · 6 paneles",
+          en: "Accordion system · 6 panels",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/cardinal-health/story/wound-care.jpg",
+            span: 4,
+            ratio: "3 / 4",
+            caption: { es: "Cuidado de heridas · TIME", en: "Wound care · TIME" },
+          },
+          {
+            src: "/images/projects/cardinal-health/story/protexis-gloves.jpg",
+            span: 4,
+            ratio: "3 / 4",
+            caption: { es: "Guantes Protexis · ajuste perfecto", en: "Protexis gloves · perfect fit" },
+          },
+          {
+            src: "/images/projects/cardinal-health/story/ted-compression.jpg",
+            span: 4,
+            ratio: "3 / 4",
+            caption: { es: "Medias T.E.D. · terapia de compresión", en: "T.E.D. stockings · compression therapy" },
+          },
+          {
+            src: "/images/projects/cardinal-health/story/kendall-product.jpg",
+            span: 12,
+            ratio: "16 / 7",
+            caption: { es: "Kendall · comunicación de producto", en: "Kendall · product communication" },
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        index: "02",
+        eyebrow: { es: "Campañas de concientización", en: "Awareness campaigns" },
+        title: {
+          es: "Educar y mover, sin perder el rigor clínico.",
+          en: "Educate and move, without losing clinical rigor.",
+        },
+        lead: {
+          es: "Sistemas de campaña para concientización de pacientes y prevención, combinando claridad educativa con narrativa visual emocional.",
+          en: "Campaign systems for patient awareness and prevention, combining educational clarity with emotionally engaging visual storytelling.",
+        },
+      },
+      {
+        kind: "feature",
+        src: "/images/projects/cardinal-health/story/thrombosis-campaign.jpg",
+        ratio: "16 / 9",
+        contain: true,
+        caption: {
+          es: "Campaña de prevención de trombosis · #ViaLibreATuVida",
+          en: "Thrombosis prevention campaign · #ViaLibreATuVida",
+        },
+      },
+      {
+        kind: "chapter",
+        index: "03",
+        eyebrow: { es: "Sistemas para redes sociales", en: "Social media systems" },
+        title: {
+          es: "La marca, consistente en cada fecha.",
+          en: "The brand, consistent on every date.",
+        },
+        lead: {
+          es: "Piezas digitales para campañas de salud, fechas conmemorativas y reconocimiento profesional, con tipografía limpia y consistencia de marca Cardinal Health.",
+          en: "Digital pieces for health campaigns, commemorative dates, and professional recognition — clean typography and strong Cardinal Health brand consistency.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/cardinal-health/story/social-womens-day.jpg",
+            span: 4,
+            ratio: "1 / 1",
+            caption: { es: "Día Internacional de la Mujer", en: "International Women's Day" },
+          },
+          {
+            src: "/images/projects/cardinal-health/story/social-nurses-day.jpg",
+            span: 4,
+            ratio: "1 / 1",
+            caption: { es: "Día Mundial de la Enfermera", en: "International Nurses Day" },
+          },
+          {
+            src: "/images/projects/cardinal-health/story/social-health-day.jpg",
+            span: 4,
+            ratio: "1 / 1",
+            caption: { es: "Día Mundial de la Salud", en: "World Health Day" },
+          },
+        ],
+      },
+      {
+        kind: "split",
+        src: "/images/projects/cardinal-health/story/calendar-2026.jpg",
+        ratio: "3 / 4",
+        contain: true,
+        flip: true,
+        title: {
+          es: "Material corporativo & producción",
+          en: "Corporate material & production",
+        },
+        body: {
+          es: "Calendarios, libretas y credenciales corporativas producidas a escala real — del concepto a la ejecución impresa, con consistencia visual de principio a fin.",
+          en: "Calendars, notebooks, and corporate credentials produced at real scale — from concept to printed execution, with visual consistency end to end.",
+        },
+        caption: {
+          es: "Calendario corporativo · 2026",
+          en: "Corporate calendar · 2026",
+        },
+      },
     ],
     es: {
       title: "Cardinal Health",
@@ -286,12 +486,15 @@ export const projects: Project[] = [
     years: "2023",
     metric: "Escala nacional",
     coverImage: "/images/projects/oxxo/cover.jpg",
+    // Ordered so orientation matches the gallery tiles: the native 16:9 food
+    // shot leads the wide tile, portraits sit in the portrait slot. gallery-01
+    // was a sideways phone photo — corrected upright.
     galleryImages: [
-      "/images/projects/oxxo/gallery-01.jpg",
       "/images/projects/oxxo/gallery-02.jpg",
+      "/images/projects/oxxo/gallery-05.jpg",
+      "/images/projects/oxxo/gallery-01.jpg",
       "/images/projects/oxxo/gallery-03.jpg",
       "/images/projects/oxxo/gallery-04.jpg",
-      "/images/projects/oxxo/gallery-05.jpg",
     ],
     es: {
       title: "OXXO",
@@ -314,11 +517,11 @@ export const projects: Project[] = [
         "Consistencia visual nacional, tiempos de implementación reducidos, y un sistema que el equipo operativo adopta sin fricción.",
       cover: "Imagen principal · OXXO",
       gallery: [
-        "Imagen · Señalización punto",
-        "Imagen · Etiquetado operativo",
-        "Imagen · Plantilla prescrita",
-        "Imagen · Formación equipo",
-        "Imagen · Aplicación nacional",
+        "Empaque de alimentos · OXXO",
+        "Etiquetado operativo",
+        "Trazabilidad de lote",
+        "Control de empaque",
+        "Presentación en punto de venta",
       ],
       credits: [
         { key: "Dirección", value: "Óscar · Grafismo Comunicaciones" },
@@ -348,11 +551,11 @@ export const projects: Project[] = [
         "National visual consistency, reduced implementation times, and a system the operations team adopts without friction.",
       cover: "Hero image · OXXO",
       gallery: [
-        "Image · Point signage",
-        "Image · Operational labeling",
-        "Image · Prescribed template",
-        "Image · Team training",
-        "Image · National application",
+        "Food packaging · OXXO",
+        "Operational labeling",
+        "Batch traceability",
+        "Packaging control",
+        "Point-of-sale presentation",
       ],
       credits: [
         { key: "Direction", value: "Óscar · Grafismo Comunicaciones" },

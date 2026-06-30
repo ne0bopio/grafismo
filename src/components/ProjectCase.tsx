@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SectionHead } from "./SectionHead";
+import { CaseStory } from "./CaseStory";
 import { projectsPath, projectPath } from "@/lib/routes";
 import type { Lang, Project } from "@/data/projects";
 import type { Dict } from "@/lib/i18n";
@@ -115,21 +116,32 @@ export function ProjectCase({
           </div>
         </section>
 
-        <section className="pt-10 pb-[120px]">
-          <SectionHead label={c.galleryLabel} num={c.galleryNum} />
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6">
-            {copy.gallery.map((label, i) => (
-              <GalleryTile
-                key={i}
-                label={label}
-                index={i}
-                tone={project.sector}
-                imageSrc={project.galleryImages[i]}
-              />
-            ))}
-          </div>
-        </section>
+        {!project.story && (
+          <section className="pt-10 pb-[120px]">
+            <SectionHead label={c.galleryLabel} num={c.galleryNum} />
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6">
+              {copy.gallery.map((label, i) => (
+                <GalleryTile
+                  key={i}
+                  label={label}
+                  index={i}
+                  tone={project.sector}
+                  imageSrc={project.galleryImages[i]}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
+
+      {project.story && (
+        <div className="relative z-[2]">
+          <div className="bound pt-4">
+            <SectionHead label={c.galleryLabel} num={c.galleryNum} />
+          </div>
+          <CaseStory story={project.story} lang={lang} accent={accent} />
+        </div>
+      )}
 
       <section
         className="bg-[var(--ink)] text-[var(--cream)]"
