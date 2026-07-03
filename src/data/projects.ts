@@ -44,6 +44,15 @@ export type Project = {
   years: string;
   metric: string;
   coverImage: string;
+  /** Optional override for the home hero carousel (tile + thumbnail). Falls back to coverImage. */
+  heroImage?: string;
+  /** Optional aspect ratio for the case-page cover frame (e.g. "3 / 2"). Defaults to 16:9. */
+  coverRatio?: string;
+  /**
+   * Render the cover with object-contain (on a cream card) in listing/hero tiles.
+   * Use for composed sheets with text or logos at the edges — cropping would clip them.
+   */
+  coverFit?: "contain";
   galleryImages: string[];
   /** When true, the project is hidden from listings, routes, and the next-project chain. */
   draft?: boolean;
@@ -139,7 +148,11 @@ export const projects: Project[] = [
     sector: "pharma",
     years: "2022",
     metric: "Audiencia clínica",
+    // The cover is a composed 3:2 sheet with the logo/headline at the edges —
+    // shown uncropped on the case page and contained in listing/hero tiles.
     coverImage: "/images/projects/cardinal-health/cover.jpg",
+    coverRatio: "3 / 2",
+    coverFit: "contain",
     galleryImages: [
       "/images/projects/cardinal-health/gallery-01.jpg",
       "/images/projects/cardinal-health/gallery-02.jpg",
@@ -397,85 +410,188 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "proclin-pharma",
+    slug: "regulatory-packaging",
     number: "PRJ—03",
     sector: "pharma",
-    years: "2021 — 2024",
-    metric: "+100K /mes",
-    coverImage: "/images/projects/proclin-pharma/cover.jpg",
+    years: "2021 — 2025",
+    metric: "LatAm",
+    coverImage: "/images/projects/regulatory-packaging/cover.jpg",
     galleryImages: [
-      "/images/projects/proclin-pharma/gallery-01.jpg",
-      "/images/projects/proclin-pharma/gallery-02.jpg",
-      "/images/projects/proclin-pharma/gallery-03.jpg",
-      "/images/projects/proclin-pharma/gallery-04.jpg",
-      "/images/projects/proclin-pharma/gallery-05.jpg",
+      "/images/projects/regulatory-packaging/gallery-01.jpg",
+      "/images/projects/regulatory-packaging/gallery-02.jpg",
+      "/images/projects/regulatory-packaging/gallery-03.jpg",
+    ],
+    story: [
+      {
+        kind: "intro",
+        eyebrow: {
+          es: "Empaques & artes regulatorios · LatAm",
+          en: "Pharmaceutical packaging & regulatory artwork · LatAm",
+        },
+        title: {
+          es: "Precisión técnica con estándares internacionales.",
+          en: "Technical precision to international standards.",
+        },
+        lead: {
+          es: "Soluciones integrales para la industria farmacéutica y healthcare: cajas plegadizas, insertos, etiquetas, roll labels y artes regulatorios listos para producción industrial. El sistema combina diseño gráfico especializado, organización técnica, control de versiones y cumplimiento normativo para mercados de Latinoamérica y Centroamérica.",
+          en: "End-to-end solutions for the pharmaceutical and healthcare industry: folding cartons, inserts, labels, roll labels, and regulatory artwork ready for industrial production. The system combines specialized graphic design, technical organization, version control, and regulatory compliance for Latin American and Central American markets.",
+        },
+        services: {
+          es: [
+            "Sistemas de empaque",
+            "Artes regulatorios",
+            "Insertos y prospectos",
+            "Producción de etiquetas",
+            "Archivos listos para imprenta",
+            "Control de calidad",
+          ],
+          en: [
+            "Packaging systems",
+            "Regulatory artwork",
+            "Insert & leaflet design",
+            "Label production",
+            "Print-ready files",
+            "Quality control",
+          ],
+        },
+      },
+      {
+        kind: "feature",
+        src: "/images/projects/regulatory-packaging/story/printed-systems.jpg",
+        ratio: "15 / 8",
+        contain: true,
+        caption: {
+          es: "Sistemas impresos — cajas plegadizas, insertos, etiquetas y roll labels para healthcare",
+          en: "Printed systems — folding cartons, inserts, labels, and roll labels for healthcare",
+        },
+      },
+      {
+        kind: "chapter",
+        index: "01",
+        eyebrow: { es: "Experiencia", en: "Experience" },
+        title: {
+          es: "Sistemas gráficos para todo el empaque healthcare.",
+          en: "Graphic systems across healthcare packaging.",
+        },
+        lead: {
+          es: "Cartones farmacéuticos, productos inyectables, suspensiones orales, roll labels, insertos médicos, cajas plegadizas y productos OTC y de prescripción — desarrollados bajo lineamientos regulatorios de la región.",
+          en: "Pharmaceutical cartons, injectable products, oral suspensions, roll labels, medical inserts, folding cartons, and OTC & prescription products — developed under the region's regulatory guidelines.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/regulatory-packaging/story/ketamina-artwork.jpg",
+            span: 6,
+            ratio: "9 / 8",
+            caption: { es: "Arte final · inyectable", en: "Final artwork · injectable" },
+          },
+          {
+            src: "/images/projects/regulatory-packaging/story/dieline-5cm.jpg",
+            span: 6,
+            ratio: "9 / 8",
+            caption: { es: "Troquel y arte · eurofix 5 cm", en: "Dieline & artwork · eurofix 5 cm" },
+          },
+          {
+            src: "/images/projects/regulatory-packaging/story/dieline-10cm.jpg",
+            span: 6,
+            ratio: "3 / 2",
+            caption: { es: "Troquel y arte · eurofix 10 cm", en: "Dieline & artwork · eurofix 10 cm" },
+          },
+          {
+            src: "/images/projects/regulatory-packaging/story/dieline-15cm.jpg",
+            span: 6,
+            ratio: "3 / 2",
+            caption: { es: "Troquel y arte · eurofix 15 cm", en: "Dieline & artwork · eurofix 15 cm" },
+          },
+        ],
+      },
+      {
+        kind: "split",
+        src: "/images/projects/regulatory-packaging/story/quality-control.jpg",
+        ratio: "3 / 2",
+        flip: true,
+        title: {
+          es: "Control de calidad antes de imprenta.",
+          en: "Quality control before print.",
+        },
+        body: {
+          es: "Cada arte pasa control de calidad antes de producción: pruebas físicas contra archivo digital, dimensiones, tipografía, códigos, variables, Pantones y barniz. Trabajamos con estructuras reales de producción y líneas de troquel listas para imprenta.",
+          en: "Every artwork passes quality control before production: physical proofs checked against the digital file, dimensions, typography, codes, variables, Pantones, and varnish. We work with real production structures and print-ready dielines.",
+        },
+        caption: {
+          es: "Validación de artes · control de calidad",
+          en: "Artwork validation · quality control",
+        },
+      },
     ],
     es: {
-      title: "Proclin Pharma",
-      industry: "Etiquetado regulatorio farmacéutico",
+      title: "Empaques & Artes Regulatorios",
+      client: "Multi-cliente · LatAm",
+      industry: "Farmacéutico · LatAm",
       deck:
-        "Rediseño del sistema de etiquetado farmacéutico bajo requisitos INVIMA — desde la plantilla editorial hasta los flujos de aprobación, con foco en trazabilidad, legibilidad clínica y tiempos de respuesta para lotes industriales.",
-      challengeTitle: "Cumplimiento sin sacrificar ritmo.",
+        "Sistemas completos de empaque farmacéutico y artes regulatorios para clientes de Latinoamérica: cajas plegadizas, insertos, etiquetas y roll labels desarrollados con precisión técnica, control de versiones y cumplimiento normativo — listos para producción industrial.",
+      challengeTitle: "Precisión para mercados regulados.",
       challenge: [
-        "El sistema previo acumulaba observaciones en cada revisión de lote: inconsistencias tipográficas, jerarquía confusa de advertencias, tiempos largos de aprobación interna.",
-        "El reto: un rediseño que pasara auditorías INVIMA sin observaciones y que el equipo pudiera sostener a ritmo industrial, lote tras lote, sin reabrir cada artwork.",
+        "El empaque farmacéutico no admite errores: cada pieza debe cumplir lineamientos regulatorios y sanitarios —INVIMA y agencias de la región—, sostener jerarquías de información críticas y ser compatible con procesos industriales de impresión.",
+        "El hilo común de estos proyectos —Aurobindo, Proclin, Vesalius, Eurociencia— fue traducir requerimientos técnicos y normativos en artes finales consistentes, sin sacrificar claridad visual ni tiempos de producción.",
       ],
-      approachTitle: "Plantillas editoriales, no artworks sueltos.",
+      approachTitle: "Del brief técnico al archivo listo para imprenta.",
       approach: [
-        "Construimos una plantilla maestra con la jerarquía regulatoria embebida — campos obligatorios, márgenes de seguridad, zonas tipográficas y advertencias codificadas.",
-        "Definimos un flujo de aprobación documentado paso a paso, con evidencia archivable para cada lote. El diseño pasó de ser un entregable a ser un proceso auditable.",
+        "Desarrollamos sistemas gráficos completos: estructura de empaque, diagramación regulatoria, insertos y prospectos de alta densidad técnica, y etiquetas autoadhesivas / roll labels con sus sistemas de codificación.",
+        "Cada arte pasa por control de calidad —dimensiones, tipografía, códigos, variables, Pantones y barniz— antes de entregar archivos optimizados para flexografía y offset.",
+        "El sistema reduce errores, mantiene la consistencia entre lotes y entrega artes maestros versionados, listos para producción real.",
       ],
-      metricLabel: "Resultado · Lote mensual",
-      metricStatement: "Etiquetas producidas al mes, cero observaciones.",
+      metricLabel: "Alcance · LatAm",
+      metricStatement: "Precisión. Cumplimiento. Healthcare.",
       metricBody:
-        "Lotes mensuales sostenidos con aprobación INVIMA sin reprocesos. Flujo auditable, documentado, y escalable al volumen real de producción.",
-      cover: "Imagen principal · Proclin Pharma",
+        "Sistemas gráficos para cartones farmacéuticos, inyectables, suspensiones orales, roll labels e insertos médicos — desarrollados con estándar técnico y entregados listos para producción industrial.",
+      cover: "Validación de arte regulatorio",
       gallery: [
-        "Imagen · Etiqueta maestra",
-        "Imagen · Empaque primario",
-        "Imagen · Lote industrial",
-        "Imagen · Flujo auditable",
-        "Imagen · Detalle tipográfico",
+        "Portafolio de empaques farmacéuticos",
+        "Especificación de etiqueta · roll label",
+        "Troquel estructural · caja plegadiza",
       ],
       credits: [
         { key: "Dirección", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Diseño regulatorio", value: "Equipo editorial · Grafismo" },
-        { key: "Validación técnica", value: "Dirección técnica Proclin Pharma" },
-        { key: "Producción", value: "Proveedores homologados · CO" },
+        { key: "Diseño regulatorio", value: "Equipo Grafismo" },
+        { key: "Clientes", value: "Aurobindo · Proclin · Vesalius · Eurociencia" },
+        { key: "Producción", value: "Flexografía / offset · proveedores homologados" },
       ],
     },
     en: {
-      title: "Proclin Pharma",
-      industry: "Pharmaceutical regulatory labeling",
+      title: "Regulatory Packaging Systems",
+      client: "Multiple clients · LatAm",
+      industry: "Pharmaceutical · LatAm",
       deck:
-        "Redesign of the pharmaceutical labeling system under INVIMA requirements — from the editorial template to the approval flow, focused on traceability, clinical legibility, and response times for industrial batches.",
-      challengeTitle: "Compliance without sacrificing speed.",
+        "Complete pharmaceutical packaging and regulatory artwork systems for Latin American clients: folding cartons, inserts, labels, and roll labels developed with technical precision, version control, and regulatory compliance — ready for industrial production.",
+      challengeTitle: "Precision for regulated markets.",
       challenge: [
-        "The previous system accumulated observations at every batch review: typographic inconsistencies, confusing warning hierarchy, long internal approval times.",
-        "The brief: a redesign that would pass INVIMA audits without observations and that the team could sustain at industrial pace, batch after batch, without reopening every artwork.",
+        "Pharmaceutical packaging allows no errors: every piece must meet regulatory and health requirements — INVIMA and regional agencies — hold critical information hierarchies, and stay compatible with industrial printing processes.",
+        "The common thread across these projects — Aurobindo, Proclin, Vesalius, Eurociencia — was translating technical and regulatory requirements into consistent print-ready artwork, without sacrificing visual clarity or production timelines.",
       ],
-      approachTitle: "Editorial templates, not loose artworks.",
+      approachTitle: "From technical brief to print-ready file.",
       approach: [
-        "We built a master template with the regulatory hierarchy embedded — mandatory fields, safety margins, typographic zones, and coded warnings.",
-        "We defined a step-by-step documented approval flow with archivable evidence for each batch. Design went from deliverable to auditable process.",
+        "We develop complete graphic systems: packaging structure, regulatory layout, high-density medical inserts and leaflets, and self-adhesive labels / roll labels with their coding systems.",
+        "Every artwork passes quality control — dimensions, typography, codes, variables, Pantones, and varnish — before delivering files optimized for flexography and offset.",
+        "The system reduces errors, keeps consistency across batches, and delivers versioned master artworks, ready for real production.",
       ],
-      metricLabel: "Result · Monthly batch",
-      metricStatement: "Labels produced per month, zero observations.",
+      metricLabel: "Reach · LatAm",
+      metricStatement: "Precision. Compliance. Healthcare.",
       metricBody:
-        "Monthly batches sustained with INVIMA approval and no rework. Auditable, documented, scalable to real production volume.",
-      cover: "Hero image · Proclin Pharma",
+        "Graphic systems for pharmaceutical cartons, injectables, oral suspensions, roll labels, and medical inserts — built to technical standard and delivered ready for industrial production.",
+      cover: "Regulatory artwork validation",
       gallery: [
-        "Image · Master label",
-        "Image · Primary packaging",
-        "Image · Industrial batch",
-        "Image · Auditable flow",
-        "Image · Typographic detail",
+        "Pharmaceutical packaging portfolio",
+        "Label specification · roll label",
+        "Structural dieline · folding carton",
       ],
       credits: [
         { key: "Direction", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Regulatory design", value: "Editorial team · Grafismo" },
-        { key: "Technical validation", value: "Proclin Pharma technical direction" },
-        { key: "Production", value: "Certified vendors · CO" },
+        { key: "Regulatory design", value: "Grafismo team" },
+        { key: "Clients", value: "Aurobindo · Proclin · Vesalius · Eurociencia" },
+        { key: "Production", value: "Flexography / offset · certified vendors" },
       ],
     },
   },
@@ -485,7 +601,11 @@ export const projects: Project[] = [
     sector: "retail",
     years: "2023",
     metric: "Escala nacional",
-    coverImage: "/images/projects/oxxo/cover.jpg",
+    // Case cover = the full labeling montage (3:2, shown uncropped via coverRatio);
+    // the hero carousel uses the in-store scene cropped from its top-left panel.
+    coverImage: "/images/projects/oxxo/story/labeling-montage.jpg",
+    coverRatio: "3 / 2",
+    heroImage: "/images/projects/oxxo/hero-instore.jpg",
     // Ordered so orientation matches the gallery tiles: the native 16:9 food
     // shot leads the wide tile, portraits sit in the portrait slot. gallery-01
     // was a sideways phone photo — corrected upright.
@@ -496,25 +616,141 @@ export const projects: Project[] = [
       "/images/projects/oxxo/gallery-03.jpg",
       "/images/projects/oxxo/gallery-04.jpg",
     ],
+    story: [
+      {
+        kind: "intro",
+        eyebrow: {
+          es: "Sistema de empaque retail · OXXO",
+          en: "Retail packaging system · OXXO",
+        },
+        title: {
+          es: "Un sistema de empaque hecho para el ritmo del retail.",
+          en: "A packaging system built for retail pace.",
+        },
+        lead: {
+          es: "Desarrollo de un sistema de empaque de alimentos a la medida para entornos retail: branding, diseño de empaque, etiquetado operativo y experiencia de cliente integrados en una solución funcional y visualmente atractiva.",
+          en: "Development of a custom food packaging system for retail environments: branding, packaging design, operational labeling, and customer experience combined into a functional, visually engaging solution.",
+        },
+        services: {
+          es: [
+            "Branding",
+            "Diseño de empaque",
+            "Etiquetado operativo",
+            "Implementación en retail",
+          ],
+          en: [
+            "Branding",
+            "Packaging design",
+            "Operational labeling",
+            "Retail implementation",
+          ],
+        },
+      },
+      {
+        kind: "chapter",
+        index: "01",
+        eyebrow: { es: "Etiquetado operativo", en: "Operational labeling" },
+        title: {
+          es: "Trazabilidad que la operación puede sostener.",
+          en: "Traceability the operation can sustain.",
+        },
+        lead: {
+          es: "Sistema integrado de etiquetas para manipulación de alimentos, trazabilidad, control de inventario y eficiencia operativa en entornos de comida retail — impresión térmica, lote, fechas y horas diligenciadas en tienda.",
+          en: "An integrated labeling system for food handling, traceability, inventory control, and operational efficiency in retail food environments — thermal printing with batch, dates, and times filled in-store.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/oxxo/story/label-systems.jpg",
+            span: 6,
+            ratio: "3 / 2",
+            caption: { es: "Sistema de etiquetas · código de barras y fast food", en: "Label system · barcode and fast food" },
+          },
+          {
+            src: "/images/projects/oxxo/story/label-machine.jpg",
+            span: 6,
+            ratio: "3 / 2",
+            caption: { es: "Impresión térmica · etiquetas en rollo", en: "Thermal printing · roll labels" },
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        index: "02",
+        eyebrow: { es: "Experiencia de cliente", en: "Customer experience" },
+        title: {
+          es: "Diseñado para experiencias reales.",
+          en: "Designed for real retail experiences.",
+        },
+        lead: {
+          es: "El empaque combina funcionalidad práctica con una presentación visual atractiva para el retail de conveniencia moderno — protege el producto, presenta la marca y mejora la entrega.",
+          en: "The packaging combines practical functionality with an appetizing visual presentation for modern convenience retail — it protects the product, carries the brand, and improves hand-off.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/oxxo/story/box-front.jpg",
+            span: 4,
+            ratio: "4 / 3",
+            caption: { es: "Caja cerrada · etiqueta aplicada", en: "Closed box · label applied" },
+          },
+          {
+            src: "/images/projects/oxxo/story/box-angle.jpg",
+            span: 4,
+            ratio: "4 / 3",
+            caption: { es: "Empaque · vista en ángulo", en: "Packaging · angled view" },
+          },
+          {
+            src: "/images/projects/oxxo/story/box-open-angle.jpg",
+            span: 4,
+            ratio: "4 / 3",
+            caption: { es: "Caja abierta · producto real", en: "Open box · real product" },
+          },
+        ],
+      },
+      {
+        kind: "split",
+        src: "/images/projects/oxxo/story/case-sheet.jpg",
+        ratio: "5 / 4",
+        contain: true,
+        flip: true,
+        title: {
+          es: "Listo para producción y operación diaria.",
+          en: "Ready for production and daily operation.",
+        },
+        body: {
+          es: "El proyecto incluyó artes finales listos para producción y aplicaciones de empaque desarrolladas para operaciones retail reales y uso comercial diario — del concepto al mostrador.",
+          en: "The project included production-ready artwork and packaging applications developed for real-world retail operations and daily commercial use — from concept to counter.",
+        },
+        caption: {
+          es: "Sistema completo · presentación del caso",
+          en: "Full system · case presentation",
+        },
+      },
+    ],
     es: {
       title: "OXXO",
-      industry: "Trazabilidad y operación",
+      industry: "Empaque de alimentos · retail",
       deck:
-        "Sistema de trazabilidad y operación visual para punto de venta — señalización, etiquetado operativo y comunicación interna a escala nacional.",
-      challengeTitle: "Sostener consistencia a ritmo retail.",
+        "Sistema de empaque de alimentos a la medida para entornos retail — branding, diseño estructural, etiquetado operativo y experiencia de cliente en una sola solución funcional.",
+      challengeTitle: "Proteger, marcar y operar a la vez.",
       challenge: [
-        "El volumen de puntos de venta, los tiempos operativos, y la rotación de personal hacían imposible sostener estándares visuales uniformes con el sistema previo.",
-        "El pedido: un sistema visual operativo, claro, y replicable — que no dependiera del criterio individual de cada tienda.",
+        "El empaque de comida en retail exige tres cosas al mismo tiempo: proteger el producto, sostener la marca y darle a la operación un sistema de etiquetado que cualquier turno pueda ejecutar sin fricción.",
+        "El pedido: un sistema de empaque y etiquetado operativo que funcionara al ritmo de tienda — manipulación, trazabilidad e inventario — sin sacrificar presentación.",
       ],
-      approachTitle: "Plantillas, no criterio individual.",
+      approachTitle: "Marca apetitosa, operación simple.",
       approach: [
-        "Construimos un sistema visual operativo con plantillas prescritas, jerarquías documentadas y materiales de formación para equipos de tienda.",
-        "El resultado: consistencia visual sostenible, tiempos de implementación reducidos, y una marca que se lee igual en cada punto de venta del país.",
+        "Diseñamos la caja y su sistema visual con la identidad OXXO — colores llamativos y un lenguaje gráfico apetitoso adaptado a entornos de alto volumen — junto a etiquetas operativas de impresión térmica para diligenciar producto, lote, fechas y horas.",
+        "El resultado: un flujo de seis pasos que va de la impresión de la etiqueta a la entrega al cliente, con la información visible para control interno, trazabilidad y seguridad alimentaria.",
       ],
       metricLabel: "Resultado · Escala nacional",
       metricStatement: "Un sistema sostenido sin perder ritmo.",
       metricBody:
-        "Consistencia visual nacional, tiempos de implementación reducidos, y un sistema que el equipo operativo adopta sin fricción.",
+        "Empaque funcional, marca consistente y un sistema de etiquetado que el equipo de tienda adopta sin fricción — listo para operación comercial diaria.",
       cover: "Imagen principal · OXXO",
       gallery: [
         "Empaque de alimentos · OXXO",
@@ -532,23 +768,23 @@ export const projects: Project[] = [
     },
     en: {
       title: "OXXO",
-      industry: "Traceability and operations",
+      industry: "Food packaging · retail",
       deck:
-        "Operational and traceability visual system for point of sale — signage, operational labeling, and internal communication at national scale.",
-      challengeTitle: "Sustaining consistency at retail pace.",
+        "A custom food packaging system for retail environments — branding, structural design, operational labeling, and customer experience in one functional solution.",
+      challengeTitle: "Protect, brand, and operate at once.",
       challenge: [
-        "The volume of stores, operational timings, and staff rotation made sustaining uniform visual standards impossible with the previous system.",
-        "The brief: an operational visual system — clear, replicable — that did not depend on each store's individual judgment.",
+        "Retail food packaging demands three things at the same time: protect the product, carry the brand, and give the operation a labeling system any shift can run without friction.",
+        "The brief: a packaging and operational labeling system that worked at store pace — handling, traceability, inventory — without sacrificing presentation.",
       ],
-      approachTitle: "Templates, not individual judgment.",
+      approachTitle: "Appetizing brand, simple operation.",
       approach: [
-        "We built an operational visual system with prescribed templates, documented hierarchies, and training materials for store teams.",
-        "The result: sustainable national consistency, reduced implementation times, and a brand that reads the same at every point of sale in the country.",
+        "We designed the box and its visual system around the OXXO identity — bold colors and a playful, food-oriented graphic language built for high-volume environments — alongside thermal-print operational labels for product, batch, dates, and times.",
+        "The result: a six-step flow from label printing to customer hand-off, with information visible for internal control, traceability, and food safety.",
       ],
       metricLabel: "Result · National scale",
       metricStatement: "A system sustained without losing pace.",
       metricBody:
-        "National visual consistency, reduced implementation times, and a system the operations team adopts without friction.",
+        "Functional packaging, consistent branding, and a labeling system store teams adopt without friction — ready for daily commercial operation.",
       cover: "Hero image · OXXO",
       gallery: [
         "Food packaging · OXXO",
@@ -811,89 +1047,8 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "regulatory-packaging",
-    number: "PRJ—08",
-    sector: "pharma",
-    years: "2021 — 2025",
-    metric: "LatAm",
-    coverImage: "/images/projects/regulatory-packaging/cover.jpg",
-    galleryImages: [
-      "/images/projects/regulatory-packaging/gallery-01.jpg",
-      "/images/projects/regulatory-packaging/gallery-02.jpg",
-      "/images/projects/regulatory-packaging/gallery-03.jpg",
-    ],
-    es: {
-      title: "Empaques & Artes Regulatorios",
-      client: "Multi-cliente · LatAm",
-      industry: "Farmacéutico · LatAm",
-      deck:
-        "Sistemas completos de empaque farmacéutico y artes regulatorios para clientes de Latinoamérica: cajas plegadizas, insertos, etiquetas y roll labels desarrollados con precisión técnica, control de versiones y cumplimiento normativo — listos para producción industrial.",
-      challengeTitle: "Precisión para mercados regulados.",
-      challenge: [
-        "El empaque farmacéutico no admite errores: cada pieza debe cumplir lineamientos regulatorios y sanitarios, sostener jerarquías de información críticas y ser compatible con procesos industriales de impresión.",
-        "El hilo común de estos proyectos —Aurobindo, Proclin, Vesalius, Eurociencia— fue traducir requerimientos técnicos y normativos en artes finales consistentes, sin sacrificar claridad visual ni tiempos de producción.",
-      ],
-      approachTitle: "Del brief técnico al archivo listo para imprenta.",
-      approach: [
-        "Desarrollamos sistemas gráficos completos: estructura de empaque, diagramación regulatoria, insertos y prospectos de alta densidad técnica, y etiquetas autoadhesivas / roll labels con sus sistemas de codificación.",
-        "Cada arte pasa por control de calidad —dimensiones, tipografía, códigos, variables, Pantones y barniz— antes de entregar archivos optimizados para flexografía y offset.",
-        "El sistema reduce errores, mantiene la consistencia entre lotes y entrega artes maestros versionados, listos para producción real.",
-      ],
-      metricLabel: "Alcance · LatAm",
-      metricStatement: "Precisión. Cumplimiento. Healthcare.",
-      metricBody:
-        "Sistemas gráficos para cartones farmacéuticos, inyectables, suspensiones orales, roll labels e insertos médicos — desarrollados con estándar técnico y entregados listos para producción industrial.",
-      cover: "Validación de arte regulatorio",
-      gallery: [
-        "Portafolio de empaques farmacéuticos",
-        "Especificación de etiqueta · roll label",
-        "Troquel estructural · caja plegadiza",
-      ],
-      credits: [
-        { key: "Dirección", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Diseño regulatorio", value: "Equipo Grafismo" },
-        { key: "Clientes", value: "Aurobindo · Proclin · Vesalius · Eurociencia" },
-        { key: "Producción", value: "Flexografía / offset · proveedores homologados" },
-      ],
-    },
-    en: {
-      title: "Regulatory Packaging Systems",
-      client: "Multiple clients · LatAm",
-      industry: "Pharmaceutical · LatAm",
-      deck:
-        "Complete pharmaceutical packaging and regulatory artwork systems for Latin American clients: folding cartons, inserts, labels, and roll labels developed with technical precision, version control, and regulatory compliance — ready for industrial production.",
-      challengeTitle: "Precision for regulated markets.",
-      challenge: [
-        "Pharmaceutical packaging allows no errors: every piece must meet regulatory and health requirements, hold critical information hierarchies, and stay compatible with industrial printing processes.",
-        "The common thread across these projects — Aurobindo, Proclin, Vesalius, Eurociencia — was translating technical and regulatory requirements into consistent print-ready artwork, without sacrificing visual clarity or production timelines.",
-      ],
-      approachTitle: "From technical brief to print-ready file.",
-      approach: [
-        "We develop complete graphic systems: packaging structure, regulatory layout, high-density medical inserts and leaflets, and self-adhesive labels / roll labels with their coding systems.",
-        "Every artwork passes quality control — dimensions, typography, codes, variables, Pantones, and varnish — before delivering files optimized for flexography and offset.",
-        "The system reduces errors, keeps consistency across batches, and delivers versioned master artworks, ready for real production.",
-      ],
-      metricLabel: "Reach · LatAm",
-      metricStatement: "Precision. Compliance. Healthcare.",
-      metricBody:
-        "Graphic systems for pharmaceutical cartons, injectables, oral suspensions, roll labels, and medical inserts — built to technical standard and delivered ready for industrial production.",
-      cover: "Regulatory artwork validation",
-      gallery: [
-        "Pharmaceutical packaging portfolio",
-        "Label specification · roll label",
-        "Structural dieline · folding carton",
-      ],
-      credits: [
-        { key: "Direction", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Regulatory design", value: "Grafismo team" },
-        { key: "Clients", value: "Aurobindo · Proclin · Vesalius · Eurociencia" },
-        { key: "Production", value: "Flexography / offset · certified vendors" },
-      ],
-    },
-  },
-  {
     slug: "gobernacion",
-    number: "PRJ—09",
+    number: "PRJ—08",
     draft: true,
     sector: "public",
     years: "2020 — 2022",

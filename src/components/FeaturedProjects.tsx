@@ -84,7 +84,9 @@ function FeaturedCard({
       href={projectPath(lang, p.slug)}
       className="group flex flex-col gap-5 transition-transform duration-500 hover:-translate-y-1"
     >
-      <div className="relative aspect-[4/3] border border-[var(--border)] overflow-hidden bg-[var(--cream-3)]">
+      <div
+        className={`relative aspect-[4/3] border border-[var(--border)] overflow-hidden ${p.coverFit === "contain" ? "bg-[var(--cream-2)]" : "bg-[var(--cream-3)]"}`}
+      >
         {p.coverImage && (
           <Image
             src={p.coverImage}
@@ -92,7 +94,11 @@ function FeaturedCard({
             fill
             sizes="(min-width: 768px) 33vw, 100vw"
             priority={priority}
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            className={
+              p.coverFit === "contain"
+                ? "object-contain"
+                : "object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            }
           />
         )}
       </div>

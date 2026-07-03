@@ -11,7 +11,7 @@ const tileSlugs = [
   "johnson-johnson",
   "terranum",
   "cardinal-health",
-  "proclin-pharma",
+  "regulatory-packaging",
   "oxxo",
 ] as const;
 
@@ -80,18 +80,26 @@ export function HeroShowcase({ lang }: { lang: Lang }) {
         {tiles.map((t, i) => {
           const tcopy = lang === "es" ? t.es : t.en;
           const isActive = i === active;
+          const tileSrc = t.heroImage ?? t.coverImage;
+          // Composed sheets (coverFit contain) render whole on a cream card and
+          // skip the Ken Burns zoom — scaling would push their edges out of frame.
+          const contain = !t.heroImage && t.coverFit === "contain";
           return (
             <div
               key={t.slug}
               className="absolute inset-0 transition-opacity duration-[600ms] ease-in-out"
-              style={{ opacity: isActive ? 1 : 0, zIndex: isActive ? 1 : 0 }}
+              style={{
+                opacity: isActive ? 1 : 0,
+                zIndex: isActive ? 1 : 0,
+                background: contain ? "var(--cream-2)" : undefined,
+              }}
             >
               <div
-                className={`absolute inset-0 ${isActive && !reduce ? "hero-kenburns" : ""}`}
+                className={`absolute inset-0 ${isActive && !reduce && !contain ? "hero-kenburns" : ""}`}
               >
-                {t.coverImage && (
+                {tileSrc && (
                   <Image
-                    src={t.coverImage}
+                    src={tileSrc}
                     alt={tcopy.title}
                     fill
                     sizes="(min-width: 1024px) 46vw, 100vw"
@@ -104,7 +112,7 @@ export function HeroShowcase({ lang }: { lang: Lang }) {
                     // some sources (e.g. the portrait Terranum cover), leaving the
                     // featured frame blank at wide viewports. Covers are web-sized.
                     unoptimized
-                    className="object-cover"
+                    className={contain ? "object-contain" : "object-cover"}
                   />
                 )}
               </div>
@@ -167,6 +175,8 @@ export function HeroShowcase({ lang }: { lang: Lang }) {
         {tiles.map((p, i) => {
           const tcopy = lang === "es" ? p.es : p.en;
           const isActive = i === active;
+          const thumbSrc = p.heroImage ?? p.coverImage;
+          const thumbContain = !p.heroImage && p.coverFit === "contain";
           return (
             <button
               key={p.slug}
@@ -174,16 +184,20 @@ export function HeroShowcase({ lang }: { lang: Lang }) {
               onClick={() => setActive(i)}
               aria-label={tcopy.title}
               aria-current={isActive}
-              className="group relative aspect-[4/3] overflow-hidden border border-[var(--border)] bg-[var(--cream-3)] focus-visible:outline-2 focus-visible:outline-offset-2"
+              className={`group relative aspect-[4/3] overflow-hidden border border-[var(--border)] focus-visible:outline-2 focus-visible:outline-offset-2 ${thumbContain ? "bg-[var(--cream-2)]" : "bg-[var(--cream-3)]"}`}
               style={{ outlineColor: sectorColor[p.sector] }}
             >
-              {p.coverImage && (
+              {thumbSrc && (
                 <Image
-                  src={p.coverImage}
+                  src={thumbSrc}
                   alt={tcopy.title}
                   fill
                   sizes="120px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={
+                    thumbContain
+                      ? "object-contain"
+                      : "object-cover transition-transform duration-500 group-hover:scale-105"
+                  }
                 />
               )}
               {/* dim inactive thumbs */}

@@ -192,13 +192,17 @@ function ProjectCard({
     >
       <div
         className={`relative border border-[var(--border)] overflow-hidden transition-transform duration-500 group-hover:-translate-y-1 ${isFeatured ? "md:flex-[1.6] md:aspect-[16/9] aspect-[4/3]" : "aspect-[4/3]"}`}
-        style={{ background: bg }}
+        style={{ background: p.coverFit === "contain" ? "var(--cream-2)" : bg }}
       >
         {p.coverImage && (
           <img
             src={p.coverImage}
             alt={copy.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            className={`absolute inset-0 w-full h-full transition-transform duration-700 ${
+              p.coverFit === "contain"
+                ? "object-contain"
+                : "object-cover group-hover:scale-[1.03]"
+            }`}
             loading="lazy"
           />
         )}

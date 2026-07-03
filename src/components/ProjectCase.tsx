@@ -72,8 +72,8 @@ export function ProjectCase({
         style={{ padding: "0 max(5vw, 32px)", animationDelay: "0.6s" }}
       >
         <div
-          className="relative aspect-[16/9] border border-[var(--border)] overflow-hidden"
-          style={{ background: bgCover }}
+          className="relative border border-[var(--border)] overflow-hidden"
+          style={{ background: bgCover, aspectRatio: project.coverRatio ?? "16 / 9" }}
         >
           {project.coverImage && (
             <img
