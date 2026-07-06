@@ -973,11 +973,201 @@ export const projects: Project[] = [
     sector: "corporate",
     years: "2024",
     metric: "NJ · USA",
-    coverImage: "/images/projects/horowitz-pharmacy/cover.jpg",
+    // Cover = 3:2 crop of the dusk photo — the finished illuminated sign on the
+    // real storefront (replaces the blurry night video-frame from launch).
+    coverImage: "/images/projects/horowitz-pharmacy/cover-dusk.jpg",
+    coverRatio: "3 / 2",
     galleryImages: [
       "/images/projects/horowitz-pharmacy/gallery-01.jpg",
       "/images/projects/horowitz-pharmacy/gallery-02.jpg",
       "/images/projects/horowitz-pharmacy/gallery-03.jpg",
+    ],
+    // Editorial spread following Óscar's Horowitz brief: overview → before →
+    // design & production → installation → final result (day + night).
+    story: [
+      {
+        kind: "intro",
+        eyebrow: {
+          es: "Señalización comercial · New Jersey, USA",
+          en: "Storefront signage · New Jersey, USA",
+        },
+        title: {
+          es: "Una fachada que se lee desde la calle.",
+          en: "A storefront you can read from the street.",
+        },
+        lead: {
+          es: "Transformación visual completa de la fachada de Horowitz Pharmacy: rediseño del aviso principal, visualización arquitectónica, producción en gran formato e instalación final — una identidad más limpia y profesional, legible a distancia de día y de noche.",
+          en: "A complete storefront transformation for Horowitz Pharmacy: main-sign redesign, architectural visualization, large-format production, and final installation — a cleaner, more professional identity, readable from a distance by day and by night.",
+        },
+        services: {
+          es: [
+            "Identidad visual",
+            "Rediseño de señalización",
+            "Visualización arquitectónica",
+            "Producción gran formato",
+            "Planeación de instalación",
+            "Implementación final",
+          ],
+          en: [
+            "Visual identity enhancement",
+            "Storefront signage redesign",
+            "Architectural visualization",
+            "Large-format production",
+            "Installation planning",
+            "Final implementation",
+          ],
+        },
+      },
+      {
+        kind: "chapter",
+        index: "01",
+        eyebrow: { es: "Antes", en: "Before" },
+        title: {
+          es: "El punto de partida.",
+          en: "The starting point.",
+        },
+        lead: {
+          es: "El aviso anterior carecía de jerarquía, consistencia y legibilidad a distancia. En una calle de alto tráfico, la farmacia pasaba desapercibida tanto para peatones como para el tráfico vehicular.",
+          en: "The previous signage lacked hierarchy, consistency, and long-distance readability. On a high-traffic street, the pharmacy went unnoticed by both pedestrians and incoming traffic.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/horowitz-pharmacy/story/before-street.jpg",
+            span: 6,
+            ratio: "16 / 9",
+            caption: {
+              es: "Fachada anterior · vista de calle",
+              en: "Previous storefront · street view",
+            },
+          },
+          {
+            src: "/images/projects/horowitz-pharmacy/story/before-sign.jpg",
+            span: 6,
+            ratio: "16 / 9",
+            caption: {
+              es: "Aviso anterior · sin jerarquía visual",
+              en: "Previous sign · no visual hierarchy",
+            },
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        index: "02",
+        eyebrow: { es: "Diseño y producción", en: "Design & production" },
+        title: {
+          es: "Azul marino y dorado, hechos para durar.",
+          en: "Navy and gold, built to last.",
+        },
+        lead: {
+          es: "La paleta azul marino y dorado comunica profesionalismo, confianza y posicionamiento premium. Tipografía, proporciones y contraste se optimizaron para lectura a varias distancias, y la producción en gran formato usó materiales exteriores de alta durabilidad compatibles con iluminación.",
+          en: "The navy-blue and gold palette communicates professionalism, trust, and premium positioning. Typography, proportions, and contrast were optimized for reading at multiple distances, and large-format production used durable, illumination-compatible exterior materials.",
+        },
+      },
+      {
+        kind: "feature",
+        src: "/images/projects/horowitz-pharmacy/story/production-banner.jpg",
+        ratio: "16 / 9",
+        caption: {
+          es: "Impresión en gran formato · la lona extendida antes del montaje",
+          en: "Large-format print · the banner laid out before mounting",
+        },
+      },
+      {
+        kind: "chapter",
+        index: "03",
+        eyebrow: { es: "Instalación", en: "Installation" },
+        title: {
+          es: "Remoción, preparación y montaje.",
+          en: "Removal, preparation, and mounting.",
+        },
+        lead: {
+          es: "La instalación comenzó con la remoción completa del aviso existente, seguida de la preparación estructural de la fachada, la integración eléctrica y el montaje alineado del nuevo sistema iluminado.",
+          en: "Installation began with the complete removal of the existing sign, followed by structural preparation of the façade, electrical integration, and aligned mounting of the new illuminated system.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/horowitz-pharmacy/story/install-removal.jpg",
+            span: 6,
+            ratio: "4 / 3",
+            caption: {
+              es: "Inicio de la remoción · aviso anterior",
+              en: "Removal begins · previous sign",
+            },
+          },
+          {
+            src: "/images/projects/horowitz-pharmacy/story/install-prep.jpg",
+            span: 6,
+            ratio: "4 / 3",
+            caption: {
+              es: "Preparación de fachada · estructura lista",
+              en: "Façade preparation · structure ready",
+            },
+          },
+        ],
+      },
+      {
+        kind: "split",
+        src: "/images/projects/horowitz-pharmacy/story/install-mounting.jpg",
+        // Native 16:9 — the printed sign spans the full frame; a tighter ratio
+        // would clip the "Rx" at its left edge.
+        ratio: "16 / 9",
+        flip: true,
+        title: {
+          es: "Integrado a la arquitectura.",
+          en: "Integrated with the architecture.",
+        },
+        body: {
+          es: "El nuevo aviso llegó impreso y ensamblado para montarse en sitio: alineación estructural, conexión eléctrica y ajustes finales para un acabado limpio, integrado a la arquitectura del edificio.",
+          en: "The new sign arrived printed and assembled for on-site mounting: structural alignment, electrical hookup, and final adjustments for a clean finish fully integrated with the building's architecture.",
+        },
+        caption: {
+          es: "El aviso nuevo en sitio · montaje final",
+          en: "The new sign on site · final mounting",
+        },
+      },
+      {
+        kind: "chapter",
+        index: "04",
+        eyebrow: { es: "Resultado", en: "Result" },
+        title: {
+          es: "De día y de noche.",
+          en: "By day and by night.",
+        },
+        lead: {
+          es: "La nueva fachada transformó la percepción del negocio: lectura a larga distancia, presencia comercial más fuerte y un aviso iluminado que sostiene el impacto visual durante la noche.",
+          en: "The new storefront transformed how the business reads: long-distance legibility, a stronger commercial presence, and an illuminated sign that holds its visual impact through the night.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/horowitz-pharmacy/story/result-dusk.jpg",
+            span: 6,
+            ratio: "3 / 4",
+            caption: {
+              es: "Resultado · al atardecer",
+              en: "Result · at dusk",
+            },
+          },
+          {
+            src: "/images/projects/horowitz-pharmacy/story/result-night.jpg",
+            span: 6,
+            ratio: "3 / 4",
+            caption: {
+              es: "Aviso iluminado · de noche",
+              en: "Illuminated sign · at night",
+            },
+          },
+        ],
+      },
     ],
     es: {
       title: "Horowitz Pharmacy",
@@ -999,7 +1189,7 @@ export const projects: Project[] = [
       metricStatement: "Identidad moderna. Mayor presencia. Mejor visibilidad.",
       metricBody:
         "La nueva fachada logró una identidad visual más fuerte, mejor visibilidad comercial y una presencia más profesional en la calle — combinando diseño, visualización, producción e instalación en una solución integral de gráfica ambiental.",
-      cover: "Aviso iluminado · resultado final",
+      cover: "Aviso iluminado · al atardecer",
       gallery: [
         "Aviso anterior · antes",
         "Instalación en fachada",
@@ -1032,7 +1222,7 @@ export const projects: Project[] = [
       metricStatement: "Modern identity. Stronger presence. Better visibility.",
       metricBody:
         "The new façade achieved a stronger visual identity, improved commercial visibility, and a more professional street presence — combining design, visualization, production, and installation into a complete environmental-graphics solution.",
-      cover: "Illuminated sign · final result",
+      cover: "Illuminated sign · at dusk",
       gallery: [
         "Previous sign · before",
         "Façade installation",
