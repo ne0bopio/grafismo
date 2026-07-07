@@ -69,11 +69,204 @@ export const projects: Project[] = [
     sector: "pharma",
     years: "2023 — 2024",
     metric: "Sin referentes",
+    // Óscar's training-scene visual (a labeled recreation) — native 3:2.
     coverImage: "/images/projects/johnson-johnson/cover.jpg",
+    coverRatio: "3 / 2",
     galleryImages: [
       "/images/projects/johnson-johnson/gallery-01.jpg",
       "/images/projects/johnson-johnson/gallery-02.jpg",
       "/images/projects/johnson-johnson/gallery-03.jpg",
+    ],
+    // Editorial spread following Óscar's "Caso Ethicon — textos finales" brief:
+    // reto → desarrollo del modelo → validación → implementación → producción.
+    story: [
+      {
+        kind: "intro",
+        eyebrow: {
+          es: "Ethicon · Johnson & Johnson",
+          en: "Ethicon · Johnson & Johnson",
+        },
+        title: {
+          es: "Entrenamiento. Precisión. Resultados reales.",
+          en: "Training. Precision. Real results.",
+        },
+        lead: {
+          es: "Desarrollo de simuladores anatómicos y soluciones visuales aplicadas al entrenamiento quirúrgico, la validación de dispositivos médicos y la comunicación especializada para la línea Ethicon de Johnson & Johnson.",
+          en: "Development of anatomical simulators and visual solutions applied to surgical training, medical-device validation, and specialized communication for Johnson & Johnson's Ethicon line.",
+        },
+        services: {
+          es: [
+            "Diseño anatómico",
+            "Exploración de materiales",
+            "Producción en espuma y gel",
+            "Validación clínica",
+            "Comunicación visual",
+            "Señalización y activaciones",
+          ],
+          en: [
+            "Anatomical design",
+            "Material research",
+            "Foam & gel production",
+            "Clinical validation",
+            "Visual communication",
+            "Signage & activations",
+          ],
+        },
+      },
+      {
+        kind: "chapter",
+        index: "01",
+        eyebrow: { es: "El reto", en: "The challenge" },
+        title: {
+          es: "Un reto sin proveedores disponibles.",
+          en: "A brief with no available suppliers.",
+        },
+        lead: {
+          es: "No existían proveedores — locales ni internacionales — capaces de producir simuladores anatómicos funcionales bajo las especificaciones requeridas para pruebas clínicas y entrenamiento técnico. Había que investigar materiales, desarrollar geometrías anatómicas y traducir conceptos médicos complejos en estructuras físicas capaces de soportar sutura, corte y validación de dispositivos.",
+          en: "No suppliers — local or international — could produce functional anatomical simulators under the specifications required for clinical testing and technical training. It meant researching materials, developing anatomical geometries, and translating complex medical concepts into physical structures able to withstand suturing, cutting, and device validation.",
+        },
+      },
+      {
+        kind: "split",
+        src: "/images/projects/johnson-johnson/story/material-aorta.jpg",
+        ratio: "3 / 4",
+        title: {
+          es: "Materialidad que se comporta como tejido.",
+          en: "Material that behaves like tissue.",
+        },
+        body: {
+          es: "Espumas y geles seleccionados para replicar elasticidad, densidad y comportamiento superficial del tejido biológico — cada pieza parte de un bloque calibrado y termina como una geometría anatómica funcional.",
+          en: "Foams and gels selected to replicate the elasticity, density, and surface behavior of biological tissue — each piece starts as a calibrated block and ends as a functional anatomical geometry.",
+        },
+        caption: {
+          es: "Exploración material · modelo aórtico en espuma",
+          en: "Material exploration · foam aortic model",
+        },
+      },
+      {
+        kind: "chapter",
+        index: "02",
+        eyebrow: { es: "Desarrollo del modelo", en: "Model development" },
+        title: {
+          es: "Diseño anatómico, del bloque al órgano.",
+          en: "Anatomical design, from block to organ.",
+        },
+        lead: {
+          es: "Simuladores en espuma y gel para representar corazón, pulmón, riñón e intestinos: conceptualización visual, corte, producción, validación física y adaptación funcional para distintos escenarios de entrenamiento clínico.",
+          en: "Foam and gel simulators representing the heart, lung, kidney, and intestines: visual conceptualization, cutting, production, physical validation, and functional adaptation for different clinical training scenarios.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/johnson-johnson/story/model-aorta.jpg",
+            span: 6,
+            ratio: "4 / 3",
+            caption: {
+              es: "Modelo aórtico · vista frontal",
+              en: "Aortic model · front view",
+            },
+          },
+          {
+            src: "/images/projects/johnson-johnson/story/model-lung.jpg",
+            span: 6,
+            ratio: "4 / 3",
+            caption: {
+              es: "Modelo pulmonar · vista lateral",
+              en: "Lung model · side view",
+            },
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        index: "03",
+        eyebrow: { es: "Validación y entrenamiento", en: "Validation & training" },
+        title: {
+          es: "Entrenamiento clínico en entornos controlados.",
+          en: "Clinical training in controlled environments.",
+        },
+        lead: {
+          es: "Los simuladores se usaron en formación médica, entrenamiento quirúrgico y validación de dispositivos de sutura y sellado de la línea Ethicon — pruebas funcionales y práctica controlada para profesionales de la salud.",
+          en: "The simulators were used in medical education, surgical training, and validation of Ethicon suturing and sealing devices — functional testing and controlled practice for healthcare professionals.",
+        },
+      },
+      {
+        kind: "feature",
+        src: "/images/projects/johnson-johnson/story/training-detail.jpg",
+        ratio: "16 / 9",
+        caption: {
+          es: "Práctica de sutura sobre simulador · recreación visual del entorno de entrenamiento",
+          en: "Suture practice on a simulator · visual recreation of the training environment",
+        },
+      },
+      {
+        kind: "chapter",
+        index: "04",
+        eyebrow: {
+          es: "Implementación y experiencia",
+          en: "Implementation & experience",
+        },
+        title: {
+          es: "Comunicación visual aplicada al entorno médico.",
+          en: "Visual communication for medical environments.",
+        },
+        lead: {
+          es: "El proyecto incluyó soporte en comunicación visual, experiencias de marca, piezas impresas, señalización y activaciones para los programas de entrenamiento y el posicionamiento corporativo de Johnson & Johnson.",
+          en: "The project also covered visual communication, brand experiences, printed pieces, signage, and activations for Johnson & Johnson's training programs and corporate positioning.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/johnson-johnson/story/env-senalizacion.jpg",
+            span: 4,
+            ratio: "3 / 4",
+            caption: {
+              es: "Señalización interna · espacios J&J",
+              en: "Interior signage · J&J spaces",
+            },
+          },
+          {
+            src: "/images/projects/johnson-johnson/story/env-install.jpg",
+            span: 4,
+            ratio: "3 / 4",
+            caption: {
+              es: "Instalación en sitio · equipo Grafismo",
+              en: "On-site installation · Grafismo team",
+            },
+          },
+          {
+            src: "/images/projects/johnson-johnson/story/env-totem.jpg",
+            span: 4,
+            ratio: "3 / 4",
+            caption: {
+              es: "Tótem exterior · wayfinding corporativo",
+              en: "Outdoor totem · corporate wayfinding",
+            },
+          },
+        ],
+      },
+      {
+        kind: "split",
+        src: "/images/projects/johnson-johnson/story/production-batch.jpg",
+        ratio: "16 / 9",
+        flip: true,
+        title: {
+          es: "Producción en serie, lista para despacho.",
+          en: "Serial production, ready to ship.",
+        },
+        body: {
+          es: "Lotes de simuladores producidos, empacados y rotulados para entrega a Johnson & Johnson — la respuesta a un brief que empezó sin proveedores disponibles.",
+          en: "Batches of simulators produced, packed, and labeled for delivery to Johnson & Johnson — the answer to a brief that began with no available suppliers.",
+        },
+        caption: {
+          es: "Lote de estómagos en espuma · despacho a J&J",
+          en: "Foam stomach batch · dispatch to J&J",
+        },
+      },
     ],
     es: {
       title: "Ethicon",

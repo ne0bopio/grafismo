@@ -13,6 +13,7 @@ const tileSlugs = [
   "cardinal-health",
   "regulatory-packaging",
   "oxxo",
+  "horowitz-pharmacy",
 ] as const;
 
 const sectorColor: Record<Sector, string> = {
@@ -171,7 +172,7 @@ export function HeroShowcase({ lang }: { lang: Lang }) {
       </div>
 
       {/* ---- Thumbnail strip ---- */}
-      <div className="mt-5 grid grid-cols-5 gap-2 sm:gap-2.5">
+      <div className="mt-5 grid grid-cols-6 gap-2 sm:gap-2.5">
         {tiles.map((p, i) => {
           const tcopy = lang === "es" ? p.es : p.en;
           const isActive = i === active;
