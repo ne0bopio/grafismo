@@ -998,9 +998,13 @@ export const projects: Project[] = [
     slug: "terranum",
     number: "PRJ—05",
     sector: "corporate",
-    years: "2022",
-    metric: "Wayfinding",
-    coverImage: "/images/projects/terranum/cover.jpg",
+    years: "2016 — 2017",
+    metric: "Cultura corporativa",
+    // Óscar's composed 3:2 case sheet — text at the edges, so it renders
+    // contained (cream card) in listing/hero tiles and uncropped on the case page.
+    coverImage: "/images/projects/terranum/cover-sheet.jpg",
+    coverRatio: "3 / 2",
+    coverFit: "contain",
     galleryImages: [
       "/images/projects/terranum/gallery-01.jpg",
       "/images/projects/terranum/gallery-02.jpg",
@@ -1008,70 +1012,273 @@ export const projects: Project[] = [
       "/images/projects/terranum/gallery-04.jpg",
       "/images/projects/terranum/gallery-05.jpg",
     ],
+    // Editorial spread following Óscar's Terranum brief: corporate culture &
+    // sustainability systems — kits ejecutivos → editorial → sostenibilidad → merch.
+    story: [
+      {
+        kind: "intro",
+        eyebrow: {
+          es: "Cultura corporativa y sostenibilidad · Terranum",
+          en: "Corporate culture & sustainability · Terranum",
+        },
+        title: {
+          es: "Branding corporativo y experiencias de sostenibilidad.",
+          en: "Corporate branding & sustainability experiences.",
+        },
+        lead: {
+          es: "Diseño y desarrollo de sistemas visuales corporativos enfocados en cultura organizacional, sostenibilidad y experiencias de marca: branding interno, piezas editoriales, merchandising, kits ejecutivos y materiales institucionales que fortalecen la identidad y los valores de la organización.",
+          en: "Design and development of corporate visual systems focused on organizational culture, sustainability, and brand experiences: internal branding, editorial pieces, merchandise, executive kits, and institutional materials that strengthen the organization's identity and values.",
+        },
+        services: {
+          es: [
+            "Cultura corporativa",
+            "Branding de sostenibilidad",
+            "Sistemas editoriales",
+            "Kits ejecutivos",
+            "Merchandising corporativo",
+            "Comunicación institucional",
+          ],
+          en: [
+            "Corporate culture",
+            "Sustainability branding",
+            "Editorial systems",
+            "Executive kits",
+            "Corporate merchandise",
+            "Institutional communication",
+          ],
+        },
+      },
+      {
+        kind: "chapter",
+        index: "01",
+        eyebrow: { es: "Kits ejecutivos", en: "Executive kits" },
+        title: {
+          es: "Regalos que declaran cultura.",
+          en: "Gifts that declare culture.",
+        },
+        lead: {
+          es: "Kits ejecutivos concebidos como experiencias de marca: cajas de madera grabadas con mensajes de liderazgo, contenidos curados y detalles pensados para generar conexión — no solo para regalar.",
+          en: "Executive kits conceived as brand experiences: engraved wooden boxes with leadership messages, curated contents, and details designed to create connection — not just to give away.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/terranum/story/kit-closed.jpg",
+            span: 6,
+            ratio: "3 / 4",
+            caption: {
+              es: "Kit ejecutivo · “El líder al servicio de su equipo”",
+              en: "Executive kit · “The leader at the service of the team”",
+            },
+          },
+          {
+            src: "/images/projects/terranum/story/kit-open.jpg",
+            span: 6,
+            ratio: "3 / 4",
+            caption: {
+              es: "Kit abierto · libro y contenidos curados",
+              en: "Kit opened · book and curated contents",
+            },
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        index: "02",
+        eyebrow: { es: "Sistemas editoriales", en: "Editorial systems" },
+        title: {
+          es: "La cultura, puesta en el escritorio.",
+          en: "Culture, placed on the desk.",
+        },
+        lead: {
+          es: "Cuadernos, agendas y calendarios diseñados con la voz de Terranum: mensajes de cultura organizacional y sostenibilidad integrados a las piezas de uso diario.",
+          en: "Notebooks, planners, and calendars designed in Terranum's voice: organizational-culture and sustainability messages built into everyday pieces.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/terranum/story/editorial-model.jpg",
+            span: 6,
+            ratio: "4 / 3",
+            caption: {
+              es: "Interior editorial · modelo de gestión",
+              en: "Editorial interior · management model",
+            },
+          },
+          {
+            src: "/images/projects/terranum/story/calendar.jpg",
+            span: 6,
+            ratio: "4 / 3",
+            caption: {
+              es: "Calendario de escritorio · mensajes de sostenibilidad",
+              en: "Desk calendar · sustainability messages",
+            },
+          },
+        ],
+      },
+      {
+        kind: "split",
+        src: "/images/projects/terranum/story/notebook.jpg",
+        ratio: "3 / 4",
+        flip: true,
+        title: {
+          es: "Una voz cálida y propia.",
+          en: "A warm voice of its own.",
+        },
+        body: {
+          es: "El tono de las piezas es cercano y humano — “¡aquí venimos a pasar bueno!” — manteniendo la identidad corporativa en cada aplicación, del cuaderno al calendario.",
+          en: "The pieces speak in a close, human tone — “we're here to have a good time!” — while keeping the corporate identity consistent across every application, from notebook to calendar.",
+        },
+        caption: {
+          es: "Cuaderno corporativo · portada con mensaje de cultura",
+          en: "Corporate notebook · culture-message cover",
+        },
+      },
+      {
+        kind: "chapter",
+        index: "03",
+        eyebrow: { es: "Sostenibilidad", en: "Sustainability" },
+        title: {
+          es: "Una marca que certifica lo que predica.",
+          en: "A brand that certifies what it preaches.",
+        },
+        lead: {
+          es: "Materiales institucionales alrededor de los logros de sostenibilidad de la organización — comunicación de edificios verdes y piezas de exhibición para sus certificaciones LEED.",
+          en: "Institutional materials around the organization's sustainability achievements — green-building communication and display pieces for its LEED certifications.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/terranum/story/cert-leed.jpg",
+            span: 6,
+            ratio: "16 / 9",
+            caption: {
+              es: "Reconocimiento LEED · liderazgo en sostenibilidad",
+              en: "LEED recognition · sustainability leadership",
+            },
+          },
+          {
+            src: "/images/projects/terranum/story/cert-gold.jpg",
+            span: 6,
+            ratio: "16 / 9",
+            caption: {
+              es: "Certificación Gold · exhibida en sitio",
+              en: "Gold certification · displayed on site",
+            },
+          },
+        ],
+      },
+      {
+        kind: "chapter",
+        index: "04",
+        eyebrow: { es: "Merchandising", en: "Merchandise" },
+        title: {
+          es: "La marca también se viste.",
+          en: "The brand gets worn, too.",
+        },
+        lead: {
+          es: "Merchandising corporativo y textiles de marca para programas internos — la identidad Terranum aplicada con la misma consistencia en cada superficie.",
+          en: "Corporate merchandise and branded textiles for internal programs — the Terranum identity applied with the same consistency on every surface.",
+        },
+      },
+      {
+        kind: "grid",
+        images: [
+          {
+            src: "/images/projects/terranum/story/merch-shorts.jpg",
+            span: 6,
+            ratio: "1 / 1",
+            caption: {
+              es: "Pantaloneta deportiva · logo aplicado",
+              en: "Sports shorts · logo application",
+            },
+          },
+          {
+            src: "/images/projects/terranum/story/merch-textile.jpg",
+            span: 6,
+            ratio: "1 / 1",
+            caption: {
+              es: "Textil corporativo · detalle de marca",
+              en: "Corporate textile · brand detail",
+            },
+          },
+        ],
+      },
+    ],
     es: {
       title: "Terranum",
-      industry: "Señalización corporativa",
+      industry: "Cultura corporativa · sostenibilidad",
       deck:
-        "Sistema de señalización corporativa — wayfinding, identidad visual de espacios y comunicación interna para edificios de oficina.",
-      challengeTitle: "Navegar un edificio sin pensarlo.",
+        "Sistemas visuales corporativos enfocados en cultura organizacional, sostenibilidad y experiencias de marca — branding interno, piezas editoriales, merchandising, kits ejecutivos y materiales institucionales para Terranum.",
+      challengeTitle: "Hacer tangible la cultura organizacional.",
       challenge: [
-        "Un edificio corporativo exige señalización que guíe sin ser notada — que informe sin decorar, que dirija sin fricción.",
-        "Pedido: un sistema de wayfinding coherente con la marca Terranum que los usuarios pudieran leer de un vistazo, desde cualquier punto del edificio.",
+        "Terranum necesitaba llevar su cultura y sus valores de sostenibilidad más allá del discurso: piezas reales que colaboradores y aliados pudieran usar, leer y regalar.",
+        "El pedido: un sistema visual corporativo — branding interno, piezas editoriales, merchandising y kits ejecutivos — coherente con la identidad y con sus logros de sostenibilidad.",
       ],
-      approachTitle: "Señalética como arquitectura de lectura.",
+      approachTitle: "Un sistema, muchas superficies.",
       approach: [
-        "Definimos un sistema visual con jerarquías claras, tipografía funcional, códigos de color por piso y nomenclatura uniforme.",
-        "El sistema es parte del edificio — no un añadido decorativo. Se implementa, se mantiene, y se expande sin perder coherencia.",
+        "Definimos un lenguaje visual cálido y consistente que se aplica igual en un cuaderno, un calendario, un kit ejecutivo o una prenda — la misma voz en cada punto de contacto.",
+        "Los kits ejecutivos se concibieron como experiencias: cajas de madera grabadas con mensajes de liderazgo, contenidos curados y detalles que generan conexión.",
+        "La comunicación institucional acompañó los logros de sostenibilidad de la organización — incluidas sus certificaciones LEED — con piezas listas para exhibir.",
       ],
-      metricLabel: "Resultado · Wayfinding sostenible",
-      metricStatement: "Un sistema de lectura por piso.",
+      metricLabel: "Resultado · Marca viva",
+      metricStatement:
+        "Diseñado para inspirar cultura. Construido para generar conexión.",
       metricBody:
-        "Señalización consistente, funcional, y alineada con la identidad Terranum. Implementación y mantenimiento simplificados.",
-      cover: "Imagen principal · Terranum",
+        "Un sistema visual que integró branding interno, piezas editoriales, merchandising, kits ejecutivos y materiales institucionales — fortaleciendo la identidad y los valores de la organización en cada punto de contacto.",
+      cover: "Sistema Terranum · presentación del caso",
       gallery: [
-        "Imagen · Señalización principal",
-        "Imagen · Código de piso",
-        "Imagen · Nomenclatura",
-        "Imagen · Detalle tipográfico",
-        "Imagen · Implementación edificio",
+        "Kit ejecutivo · caja grabada",
+        "Kit abierto · contenidos",
+        "Piezas editoriales",
+        "Certificaciones de sostenibilidad",
+        "Merchandising corporativo",
       ],
       credits: [
         { key: "Dirección", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Diseño de señalética", value: "Equipo editorial · Grafismo" },
+        { key: "Diseño y branding", value: "Equipo editorial · Grafismo" },
         { key: "Validación", value: "Equipo Terranum" },
         { key: "Producción", value: "Proveedores homologados · CO" },
       ],
     },
     en: {
       title: "Terranum",
-      industry: "Corporate signage",
+      industry: "Corporate culture · sustainability",
       deck:
-        "Corporate signage system — wayfinding, spatial visual identity, and internal communication for office buildings.",
-      challengeTitle: "Navigating a building without thinking about it.",
+        "Corporate visual systems focused on organizational culture, sustainability, and brand experiences — internal branding, editorial pieces, merchandise, executive kits, and institutional materials for Terranum.",
+      challengeTitle: "Making organizational culture tangible.",
       challenge: [
-        "A corporate building needs signage that guides without being noticed — that informs without decorating, that directs without friction.",
-        "The brief: a wayfinding system coherent with the Terranum brand that users could read at a glance from anywhere in the building.",
+        "Terranum needed to take its culture and sustainability values beyond words: real pieces that employees and partners could use, read, and gift.",
+        "The brief: a corporate visual system — internal branding, editorial pieces, merchandise, and executive kits — coherent with the identity and its sustainability achievements.",
       ],
-      approachTitle: "Signage as reading architecture.",
+      approachTitle: "One system, many surfaces.",
       approach: [
-        "We defined a visual system with clear hierarchies, functional typography, floor-based color codes, and uniform nomenclature.",
-        "The system is part of the building — not a decorative add-on. It's implemented, maintained, and expanded without losing coherence.",
+        "We defined a warm, consistent visual language that applies equally to a notebook, a calendar, an executive kit, or a garment — the same voice at every touchpoint.",
+        "The executive kits were conceived as experiences: engraved wooden boxes with leadership messages, curated contents, and details that create connection.",
+        "Institutional communication supported the organization's sustainability achievements — including its LEED certifications — with display-ready pieces.",
       ],
-      metricLabel: "Result · Sustainable wayfinding",
-      metricStatement: "A per-floor reading system.",
+      metricLabel: "Result · A living brand",
+      metricStatement:
+        "Designed to inspire culture. Built to create connection.",
       metricBody:
-        "Consistent, functional signage aligned with the Terranum identity. Simplified implementation and maintenance.",
-      cover: "Hero image · Terranum",
+        "A visual system spanning internal branding, editorial pieces, merchandise, executive kits, and institutional materials — strengthening the organization's identity and values at every touchpoint.",
+      cover: "Terranum system · case presentation",
       gallery: [
-        "Image · Primary signage",
-        "Image · Floor code",
-        "Image · Nomenclature",
-        "Image · Typographic detail",
-        "Image · Building implementation",
+        "Executive kit · engraved box",
+        "Kit opened · contents",
+        "Editorial pieces",
+        "Sustainability certifications",
+        "Corporate merchandise",
       ],
       credits: [
         { key: "Direction", value: "Óscar · Grafismo Comunicaciones" },
-        { key: "Signage design", value: "Editorial team · Grafismo" },
+        { key: "Design & branding", value: "Editorial team · Grafismo" },
         { key: "Validation", value: "Terranum team" },
         { key: "Production", value: "Certified vendors · CO" },
       ],

@@ -57,7 +57,7 @@ export const es = {
       ctaAll: "Ver todos los proyectos",
       jjOutcome: "Simuladores anatómicos funcionales para el entrenamiento quirúrgico Ethicon — soluciones reales donde no existían referentes.",
       cardinalOutcome: "Materiales clínicos validados por especialistas — diseño como instrumento de lectura, no como decoración.",
-      terranumOutcome: "Wayfinding corporativo legible de un vistazo — sistema sostenible que se mantiene y se expande sin perder coherencia.",
+      terranumOutcome: "Cultura y sostenibilidad hechas piezas reales — kits ejecutivos, sistemas editoriales y merchandising con una sola voz de marca.",
       horowitzOutcome: "Rebranding e instalación de fachada en Nueva Jersey — identidad más fuerte y mejor visibilidad comercial, de día y de noche.",
     },
     mensaje: {
@@ -343,7 +343,7 @@ export const en = {
       ctaAll: "View all projects",
       jjOutcome: "Functional anatomical simulators for Ethicon surgical training — real solutions where no precedent existed.",
       cardinalOutcome: "Clinical materials validated by specialists — design as a reading instrument, not decoration.",
-      terranumOutcome: "Corporate wayfinding readable at a glance — a sustainable system that's maintained and expanded without losing coherence.",
+      terranumOutcome: "Culture and sustainability turned into real pieces — executive kits, editorial systems, and merchandise with a single brand voice.",
       horowitzOutcome: "Storefront rebrand and signage installation in New Jersey — a stronger identity and better commercial visibility, day and night.",
     },
     mensaje: {
