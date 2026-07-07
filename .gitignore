@@ -42,3 +42,6 @@ next-env.d.ts
 
 # raw client source assets (provenance kept local; web-ready versions live in public/)
 /reference
+
+# local Claude Code tooling (launch.json etc.)
+/.claude
