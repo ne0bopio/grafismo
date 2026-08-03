@@ -69,7 +69,7 @@ export function ProjectsIndex({ lang, dict }: { lang: Lang; dict: Dict }) {
         className="max-w-[1440px] mx-auto mt-16 mb-8 flex justify-between items-start sm:items-center gap-6 flex-wrap border-t border-[var(--border)] pt-6"
         style={{ padding: "24px max(5vw, 32px) 0" }}
       >
-        <div className="flex gap-2 flex-wrap font-mono-g text-[11px] tracking-[0.12em] uppercase">
+        <div className="flex gap-2 flex-wrap font-mono-g text-[11px] tracking-[0.12em] uppercase sd-rise">
           <span className="bg-[var(--ink)] text-[var(--cream)] px-3.5 py-2 rounded-full border border-[var(--ink)] inline-flex items-center gap-2">
             {d.filterAll} · {totalStr}
           </span>
@@ -104,7 +104,7 @@ export function ProjectsIndex({ lang, dict }: { lang: Lang; dict: Dict }) {
             );
           })}
         </div>
-        <div className="font-mono-g text-[11px] tracking-[0.12em] uppercase text-[var(--stone)]">
+        <div className="font-mono-g text-[11px] tracking-[0.12em] uppercase text-[var(--stone)] sd-rise">
           {d.showing}{" "}
           <strong className="text-[var(--ink)] font-medium">
             {totalStr} / {totalStr}
@@ -113,7 +113,7 @@ export function ProjectsIndex({ lang, dict }: { lang: Lang; dict: Dict }) {
       </div>
 
       <section
-        className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-10 md:gap-x-6 mb-40"
+        className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-10 md:gap-x-6 mb-40 sd-stagger"
         style={{ padding: "24px max(5vw, 32px) 0" }}
       >
         {projects.map((p, i) => (
@@ -132,7 +132,7 @@ export function ProjectsIndex({ lang, dict }: { lang: Lang; dict: Dict }) {
         style={{ padding: "100px max(5vw, 32px)" }}
       >
         <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 items-end">
-          <h3 className="font-display italic font-normal text-[clamp(32px,5vw,80px)] leading-[0.95] tracking-[-0.025em] max-w-[12ch]">
+          <h3 className="font-display italic font-normal text-[clamp(32px,5vw,80px)] leading-[0.95] tracking-[-0.025em] max-w-[12ch] sd-wipe-up">
             {d.nextCtaA}
             <em className="not-italic italic text-[var(--retail)]">
               {d.nextCtaEm}
@@ -141,7 +141,7 @@ export function ProjectsIndex({ lang, dict }: { lang: Lang; dict: Dict }) {
           </h3>
           <Link
             href={`${homePath(lang)}${contactHash(lang)}`}
-            className="justify-self-start md:justify-self-end inline-flex items-center gap-3.5 px-[26px] py-4 rounded-full border border-[rgba(244,241,234,0.3)] text-[15px] font-medium text-[var(--cream)] transition-all duration-300 hover:bg-[var(--cream)] hover:text-[var(--ink)] hover:border-[var(--cream)]"
+            className="sd-rise justify-self-start md:justify-self-end inline-flex items-center gap-3.5 px-[26px] py-4 rounded-full border border-[rgba(244,241,234,0.3)] text-[15px] font-medium text-[var(--cream)] transition-all duration-300 hover:bg-[var(--cream)] hover:text-[var(--ink)] hover:border-[var(--cream)]"
           >
             {d.nextCtaBtn} <span>→</span>
           </Link>

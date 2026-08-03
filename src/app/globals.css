@@ -161,16 +161,21 @@ img, svg { display: block; max-width: 100%; }
 
   /* Each row rides its own timeline, nudged progressively later so the
      career phases deal out one after another instead of as a block. */
+  /* Offsets cycle every 6 (`6n+k`) so a grid of any length keeps staggering.
+     A plain `:nth-child(1..6)` list leaves child 7+ with no range at all,
+     which falls back to `normal` — the full cover range — and those items
+     crawl in over the whole scroll instead of matching their neighbours.
+     The 6n+1 case is the base rule below. */
   .sd-stagger > * {
     animation: sd-rise linear both;
     animation-timeline: view();
+    animation-range: 2% 24%;
   }
-  .sd-stagger > *:nth-child(1) { animation-range:  2% 24%; }
-  .sd-stagger > *:nth-child(2) { animation-range:  6% 28%; }
-  .sd-stagger > *:nth-child(3) { animation-range: 10% 32%; }
-  .sd-stagger > *:nth-child(4) { animation-range: 14% 36%; }
-  .sd-stagger > *:nth-child(5) { animation-range: 18% 40%; }
-  .sd-stagger > *:nth-child(6) { animation-range: 22% 44%; }
+  .sd-stagger > *:nth-child(6n + 2) { animation-range:  6% 28%; }
+  .sd-stagger > *:nth-child(6n + 3) { animation-range: 10% 32%; }
+  .sd-stagger > *:nth-child(6n + 4) { animation-range: 14% 36%; }
+  .sd-stagger > *:nth-child(6n + 5) { animation-range: 18% 40%; }
+  .sd-stagger > *:nth-child(6n + 6) { animation-range: 22% 44%; }
 
   /* Section hairline. This element is 1px tall, so an `entry`-relative range
      spans 1px of scroll and the draw finishes instantly — the line just
@@ -213,9 +218,25 @@ img, svg { display: block; max-width: 100%; }
    translate must equal 100/<number of runs>%. Edge fade is a mask so it works
    over the ink background without faking a gradient in the section's colour. */
 .marquee {
+  --marquee-fade: 24px;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+}
+/* On a phone the reel breaks out of the section padding and runs edge to edge,
+   so the names get the full screen width instead of ~326px of a 390px view.
+   The mask then fades at the true screen edges, which is what makes it read as
+   a reel rather than a clipped list.
+   A negative margin alone only SHIFTS a width:100% flex item left, leaving the
+   same amount of dead space on the right — the width has to grow by both
+   insets too. This rule is unlayered, so it beats Tailwind's layered `w-full`. */
+.marquee-bleed {
+  margin-inline: calc(-1 * max(5vw, 32px));
+  width: calc(100% + 2 * max(5vw, 32px));
+}
+@media (min-width: 768px) {
+  .marquee { --marquee-fade: 40px; }
+  .marquee-bleed { margin-inline: 0; width: auto; }
 }
 .marquee-track {
   display: flex;

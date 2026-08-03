@@ -126,6 +126,18 @@ equal `100 / <run count>`%. And do not drop to two runs — one run measures
 a visible gap at the right edge at the loop point. Rule: `runWidth × (runs − 1)`
 must exceed the widest possible visible track.
 
+**Phone layout.** Inline, the "Hemos trabajado con" label ate ~180px of a 390px
+screen and left the names in a slot barely one word wide. On mobile the label
+and "y más" share a top row and the reel runs full-bleed below via
+`.marquee-bleed`. Two traps there:
+
+- A negative margin alone only *shifts* a `width: 100%` item; the width must
+  grow by both insets too, or you get the same dead space back on the right.
+- The strip container is `flex-wrap`, and the track is ~2730px of content, so
+  on desktop the reel's auto base size forces its own line. `md:basis-0` +
+  `grow` keeps it inline. (Under the old `nowrap` container it shrank instead,
+  which is why this only appeared once the mobile layout was added.)
+
 Only the first run is exposed to assistive tech; the duplicates are
 `aria-hidden`, and under `prefers-reduced-motion: reduce` they're hidden
 entirely so the strip degrades to a plain static list. Edge fade is a
@@ -144,7 +156,16 @@ from near-grey to full colour). The page stays a server component — no
 Applied across the whole page, not just one section: `.sd-line` on every
 SectionHead hairline (the connective pulse), `.sd-wipe-up` on every display
 heading, `.sd-stagger` on the card grids (featured, validación, impacto), and
-`.sd-rise` on supporting copy and CTAs.
+`.sd-rise` on supporting copy and CTAs. The **projects index**
+(`ProjectsIndex.tsx`) uses the same vocabulary: filter chips and counter rise,
+the card grid staggers, the closing dark CTA wipes up. Project *detail* pages
+still animate through framer-motion `Reveal` in `CaseStory.tsx` — a separate,
+older mechanism.
+
+`.sd-stagger` offsets cycle every six children (`6n+k`) so a grid of any length
+keeps staggering; the projects grid has seven cards. A flat `:nth-child(1..6)`
+list leaves the seventh with no range, which falls back to the full cover range
+and makes it crawl in out of step with its neighbours.
 
 Five traps, all already handled — don't undo them:
 
