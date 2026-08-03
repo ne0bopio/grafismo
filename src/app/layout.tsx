@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { OSCAR_LINKEDIN } from "@/lib/routes";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -90,6 +91,7 @@ const jsonLd = {
       name: "Óscar",
       jobTitle: "Founding partner · Marketing Director",
       worksFor: { "@id": "https://grafismobusiness.com#org" },
+      sameAs: [OSCAR_LINKEDIN],
     },
   ],
 };

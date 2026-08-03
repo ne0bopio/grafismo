@@ -28,30 +28,34 @@ export function FeaturedProjects({ lang, dict }: { lang: Lang; dict: Dict }) {
     <section id="proyectos-destacados" className="py-[120px]">
       <SectionHead label={f.label} num={f.num} />
       <div className="grid md:grid-cols-2 gap-14 items-end mb-14 mt-12">
-        <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,88px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch]">
+        <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,88px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch] sd-wipe-up">
           {f.headingA}
           <em className="not-italic italic text-[var(--pharma)]">{f.headingEm}</em>
           {f.headingB}
         </h2>
-        <p className="text-[15px] leading-[1.6] text-[var(--ink-2)] max-w-[44ch]">
+        <p className="text-[15px] leading-[1.6] text-[var(--ink-2)] max-w-[44ch] sd-rise">
           {f.note}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sd-stagger">
         {items.map((p, i) => (
-          <FeaturedCard
-            key={p.slug}
-            p={p}
-            lang={lang}
-            ctaLabel={f.cta}
-            outcome={f[outcomeKeyBySlug[p.slug]]}
-            priority={i === 0}
-          />
+          /* Wrapper exists so the scroll reveal and the hover lift animate
+             different elements — .sd-stagger sets transform on the grid child,
+             and a running animation beats the card's hover:-translate-y-1. */
+          <div key={p.slug}>
+            <FeaturedCard
+              p={p}
+              lang={lang}
+              ctaLabel={f.cta}
+              outcome={f[outcomeKeyBySlug[p.slug]]}
+              priority={i === 0}
+            />
+          </div>
         ))}
       </div>
 
-      <div className="mt-12 flex">
+      <div className="mt-12 flex sd-rise">
         <Link
           href={projectsPath(lang)}
           className="btn-g btn-ghost-g inline-block text-[14px] font-medium"

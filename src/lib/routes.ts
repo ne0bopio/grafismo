@@ -1,5 +1,9 @@
 import type { Lang } from "@/data/projects";
 
+/** Óscar's LinkedIn profile — used by the leadership CTA, the footer and the JSON-LD. */
+export const OSCAR_LINKEDIN =
+  "https://www.linkedin.com/in/oscar-javier-torres-pastrana-82251743/";
+
 export function homePath(lang: Lang): string {
   return lang === "es" ? "/" : "/en";
 }

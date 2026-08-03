@@ -21,7 +21,7 @@ export function SectionHead({
         {label}
       </span>
       <span
-        className="h-px"
+        className="h-px sd-line"
         style={{
           background: darkBg ? "rgba(244,241,234,0.14)" : "var(--border)",
         }}

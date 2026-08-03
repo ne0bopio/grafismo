@@ -114,6 +114,144 @@ img, svg { display: block; max-width: 100%; }
   animation: rise 1s cubic-bezier(.2,.7,.2,1) forwards;
 }
 
+/* ---------- Scroll-driven reveals (view-progress timeline) ----------
+   Native CSS: each element drives its own animation from its own position in
+   the viewport — no JS, no IntersectionObserver, no "use client". The page
+   stays a server component.
+
+   Everything is double-gated. Browsers without `animation-timeline` (Firefox
+   at time of writing) and anyone who asks the OS for reduced motion never
+   match the wrapper, so they get the plain, finished page — no opacity:0
+   elements stranded invisible. That's why the keyframes live inside the
+   guard and the base classes carry no starting state of their own. */
+/* Keyframes stay at the top level and the at-rules are never nested inside
+   one another — Tailwind v4's Lightning CSS silently drops the whole block
+   when @keyframes sit inside @media + @supports. Verified by grepping the
+   compiled chunk; don't "tidy" these back into a nested form. */
+@keyframes sd-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes sd-wipe {
+  from { clip-path: inset(0 0 84% 0); }
+  to   { clip-path: inset(0 0 0% 0); }
+}
+@keyframes sd-develop {
+  from { filter: grayscale(0.72) contrast(1.06); transform: scale(1.06); }
+  to   { filter: grayscale(0) contrast(1);       transform: scale(1); }
+}
+/* The connective rhythm: every SectionHead hairline draws itself left→right
+   as the section arrives, so the page has a pulse instead of just appearing. */
+@keyframes sd-draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+/* Display headings rise out of their own baseline — the editorial beat. */
+@keyframes sd-wipe-up {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(0.16em); }
+  to   { clip-path: inset(0 0 0% 0);   transform: translateY(0); }
+}
+
+@supports (animation-timeline: view()) {
+  .sd-rise {
+    animation: sd-rise linear both;
+    animation-timeline: view();
+    animation-range: 5% 30%;
+  }
+
+  /* Each row rides its own timeline, nudged progressively later so the
+     career phases deal out one after another instead of as a block. */
+  .sd-stagger > * {
+    animation: sd-rise linear both;
+    animation-timeline: view();
+  }
+  .sd-stagger > *:nth-child(1) { animation-range:  2% 24%; }
+  .sd-stagger > *:nth-child(2) { animation-range:  6% 28%; }
+  .sd-stagger > *:nth-child(3) { animation-range: 10% 32%; }
+  .sd-stagger > *:nth-child(4) { animation-range: 14% 36%; }
+  .sd-stagger > *:nth-child(5) { animation-range: 18% 40%; }
+  .sd-stagger > *:nth-child(6) { animation-range: 22% 44%; }
+
+  /* Section hairline. This element is 1px tall, so an `entry`-relative range
+     spans 1px of scroll and the draw finishes instantly — the line just
+     appears. Bare percentages are relative to the whole cover range
+     (viewport height + element height), giving ~110px of scroll to draw
+     across. Same trap applies to any short element you hang a reveal on. */
+  .sd-line {
+    transform-origin: left center;
+    animation: sd-draw linear both;
+    animation-timeline: view();
+    animation-range: 0% 12%;
+  }
+
+  .sd-wipe-up {
+    animation: sd-wipe-up linear both;
+    animation-timeline: view();
+    animation-range: 8% 34%;
+  }
+
+  /* The portrait is the "soul" beat: the frame wipes open like a print
+     coming off the press while the image itself resolves from near-grey
+     into full colour. Wipe on the frame, colour on the <img>, so the
+     caption plate underneath isn't desaturated along with it. */
+  .sd-portrait {
+    animation: sd-wipe linear both;
+    animation-timeline: view();
+    animation-range: 0% 26%;
+  }
+  .sd-portrait-img {
+    animation: sd-develop linear both;
+    animation-timeline: view();
+    animation-range: 4% 46%;
+  }
+}
+
+/* ---------- Client reel (marquee) ----------
+   Three identical runs inside the track; translating by -33.3333% (one run)
+   lands run B exactly where run A began, so the loop is seamless without
+   measuring anything. Keep the run count and this percentage in sync — the
+   translate must equal 100/<number of runs>%. Edge fade is a mask so it works
+   over the ink background without faking a gradient in the section's colour. */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 38s linear infinite;
+}
+/* Pausing on hover lets someone actually read a client name. */
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.3333%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  /* Without motion the duplicate run is just repeated noise — hide it and let
+     the strip sit still as a plain list. */
+  .marquee-track > [aria-hidden="true"] { display: none; }
+}
+
+/* Anyone who asks the OS for less motion gets the finished page. Safe because
+   the base classes carry no starting state of their own — killing the
+   animation can't strand an element at opacity 0. Same reason browsers
+   without animation-timeline (Firefox, currently) need no fallback. */
+@media (prefers-reduced-motion: reduce) {
+  .sd-rise,
+  .sd-stagger > *,
+  .sd-portrait,
+  .sd-portrait-img,
+  .sd-line,
+  .sd-wipe-up {
+    animation: none;
+  }
+}
+
 /* ---------- Hero showcase ---------- */
 @keyframes hero-kenburns {
   from { transform: scale(1); }

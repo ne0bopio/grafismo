@@ -47,7 +47,7 @@ export const es = {
     },
     featured: {
       label: "Proyectos destacados",
-      num: "002",
+      num: "004",
       headingA: "Casos donde el ",
       headingEm: "criterio se ve",
       headingB: ".",
@@ -116,7 +116,7 @@ export const es = {
     },
     leader: {
       label: "Liderazgo",
-      num: "006",
+      num: "002",
       headingA: "Un oficio ",
       headingEm: "construido por fases",
       headingB: ".",
@@ -134,11 +134,11 @@ export const es = {
       tl3Year: "2020 → hoy",
       tl3Role: "Gerente de Mercadeo",
       tl3Tag: "Actual",
-      cta: "Perfil completo →",
+      cta: "Perfil completo en LinkedIn →",
     },
     impact: {
       label: "Impacto",
-      num: "007",
+      num: "005",
       headingA: "Lo que el ",
       headingEm: "oficio deja medible",
       headingB: ".",
@@ -157,7 +157,7 @@ export const es = {
     },
     method: {
       label: "Metodología",
-      num: "008",
+      num: "006",
       headingA: "Un proceso ",
       headingEm: "de cinco pasos",
       headingB: ".",
@@ -176,7 +176,7 @@ export const es = {
     },
     validate: {
       label: "Validación",
-      num: "009",
+      num: "003",
       headingA: "Voces que ",
       headingEm: "respaldan el oficio",
       headingB: ".",
@@ -192,7 +192,7 @@ export const es = {
     },
     projection: {
       label: "Proyección Internacional",
-      num: "010",
+      num: "007",
       eyebrow: "CO → US · Applicability",
       headingA: "Un estándar pensado para ",
       headingEm: "mercados avanzados",
@@ -206,7 +206,7 @@ export const es = {
     },
     contact: {
       label: "Contacto",
-      num: "011",
+      num: "008",
       headingA: "Iniciemos ",
       headingEm: "un proyecto",
       headingB: ".",
@@ -283,6 +283,7 @@ export const es = {
     navTitle: "Navegación",
     sectorsTitle: "Sectores",
     contactTitle: "Contacto",
+    linkedin: "LinkedIn",
     rights: "© 2026 Grafismo Comunicaciones · Bogotá · CO",
     version: "GC—001 / v0.3",
   },
@@ -333,7 +334,7 @@ export const en = {
     },
     featured: {
       label: "Featured projects",
-      num: "002",
+      num: "004",
       headingA: "Cases where the ",
       headingEm: "criterion shows",
       headingB: ".",
@@ -399,7 +400,7 @@ export const en = {
     },
     leader: {
       label: "Leadership",
-      num: "006",
+      num: "002",
       headingA: "A craft ",
       headingEm: "built in phases",
       headingB: ".",
@@ -417,11 +418,11 @@ export const en = {
       tl3Year: "2020 → today",
       tl3Role: "Marketing Director",
       tl3Tag: "Current",
-      cta: "Full profile →",
+      cta: "Full profile on LinkedIn →",
     },
     impact: {
       label: "Impact",
-      num: "007",
+      num: "005",
       headingA: "What the ",
       headingEm: "craft leaves measurable",
       headingB: ".",
@@ -440,7 +441,7 @@ export const en = {
     },
     method: {
       label: "Method",
-      num: "008",
+      num: "006",
       headingA: "A process ",
       headingEm: "of five steps",
       headingB: ".",
@@ -459,7 +460,7 @@ export const en = {
     },
     validate: {
       label: "Validation",
-      num: "009",
+      num: "003",
       headingA: "Voices that ",
       headingEm: "back the craft",
       headingB: ".",
@@ -475,7 +476,7 @@ export const en = {
     },
     projection: {
       label: "International Applicability",
-      num: "010",
+      num: "007",
       eyebrow: "CO → US · Applicability",
       headingA: "A standard built for ",
       headingEm: "advanced markets",
@@ -489,7 +490,7 @@ export const en = {
     },
     contact: {
       label: "Contact",
-      num: "011",
+      num: "008",
       headingA: "Let's start ",
       headingEm: "a project",
       headingB: ".",
@@ -566,6 +567,7 @@ export const en = {
     navTitle: "Navigation",
     sectorsTitle: "Sectors",
     contactTitle: "Contact",
+    linkedin: "LinkedIn",
     rights: "© 2026 Grafismo Comunicaciones · Bogotá · CO",
     version: "GC—001 / v0.3",
   },

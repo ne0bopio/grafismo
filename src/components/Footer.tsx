@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GrafismoMark } from "./GrafismoMark";
-import { homePath, projectsPath, contactHash } from "@/lib/routes";
+import { LinkedInMark } from "./LinkedInMark";
+import { homePath, projectsPath, contactHash, OSCAR_LINKEDIN } from "@/lib/routes";
 import type { Lang } from "@/data/projects";
 import type { Dict } from "@/lib/i18n";
 
@@ -65,6 +66,17 @@ export function Footer({ lang, dict }: { lang: Lang; dict: Dict }) {
             </li>
             <li><span className="text-[14px] opacity-85">{dict.home.contact.vWhats}</span></li>
             <li><span className="text-[14px] opacity-85">{dict.home.contact.vLoc}</span></li>
+            <li>
+              <a
+                href={OSCAR_LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] opacity-85 hover:opacity-100 transition-opacity inline-flex items-center gap-2"
+              >
+                <LinkedInMark />
+                {dict.footer.linkedin}
+              </a>
+            </li>
           </ul>
         </div>
       </div>

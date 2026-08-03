@@ -4,13 +4,13 @@ import { MethodSteps } from "./MethodSteps";
 import { HeroShowcase } from "./HeroShowcase";
 import { ClientLogoStrip } from "./ClientLogoStrip";
 import { FeaturedProjects } from "./FeaturedProjects";
-import { projectsPath } from "@/lib/routes";
+import { LinkedInMark } from "./LinkedInMark";
+import { OSCAR_LINKEDIN } from "@/lib/routes";
 import type { Lang } from "@/data/projects";
 import type { Dict } from "@/lib/i18n";
 
 export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
   const d = dict.home;
-  const projects = projectsPath(lang);
 
   return (
     <main className="relative z-[2]">
@@ -137,32 +137,10 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
 
       <ClientLogoStrip dict={dict} />
 
-      <div className="bound">
-        <FeaturedProjects lang={lang} dict={dict} />
-
-        {/* ============ MENSAJE CLAVE ============ */}
-        <section className="py-[120px] relative">
-          <SectionHead label={d.mensaje.label} num={d.mensaje.num} />
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_7fr_1fr] gap-6 mt-12">
-            <blockquote
-              className="md:col-start-2 font-display italic font-normal text-[clamp(28px,4.2vw,64px)] leading-[1.08] tracking-[-0.02em] text-[var(--ink)] relative"
-            >
-              <span
-                className="hidden md:block absolute -left-10 w-7 h-px bg-[var(--pharma)]"
-                style={{ top: "0.4em" }}
-              />
-              {d.mensaje.quoteA}
-              <em className="not-italic italic text-[var(--pharma)]">
-                {d.mensaje.quoteEm}
-              </em>
-              {d.mensaje.quoteB}
-            </blockquote>
-          </div>
-        </section>
-
-      </div>
-
-      {/* ============ LIDERAZGO ============ */}
+      {/* ============ LIDERAZGO ============
+          Sits directly after the hero on purpose: the hero already carries the
+          project carousel, so leading with the person — not a second reel of
+          the same work — is what makes the page read human. */}
       <section
         id="liderazgo"
         className="bg-[var(--cream-2)] py-[120px] relative border-y border-[var(--border)]"
@@ -170,11 +148,11 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
         <div className="bound">
           <SectionHead label={d.leader.label} num={d.leader.num} />
           <div className="grid md:grid-cols-[5fr_7fr] gap-[72px] items-start mt-12">
-            <div className="relative aspect-[4/5] border border-[var(--border)] overflow-hidden bg-[var(--cream-3)]">
+            <div className="relative aspect-[4/5] border border-[var(--border)] overflow-hidden bg-[var(--cream-3)] sd-portrait">
               <img
                 src="/images/leadership/oscar.jpg"
                 alt={d.leader.photoName}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover sd-portrait-img"
               />
               <div
                 className="absolute inset-x-0 bottom-0 p-6 pt-14"
@@ -192,17 +170,17 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
               </div>
             </div>
             <div>
-              <h2 className="font-display italic font-normal text-[clamp(40px,5vw,76px)] leading-[0.95] tracking-[-0.025em] max-w-[12ch]">
+              <h2 className="font-display italic font-normal text-[clamp(40px,5vw,76px)] leading-[0.95] tracking-[-0.025em] max-w-[12ch] sd-wipe-up">
                 {d.leader.headingA}
                 <em className="not-italic italic text-[var(--pharma)]">
                   {d.leader.headingEm}
                 </em>
                 {d.leader.headingB}
               </h2>
-              <p className="mt-7 text-[15.5px] leading-[1.6] text-[var(--ink-2)] max-w-[52ch]">
+              <p className="mt-7 text-[15.5px] leading-[1.6] text-[var(--ink-2)] max-w-[52ch] sd-rise">
                 {d.leader.bio}
               </p>
-              <div className="mt-12 grid">
+              <div className="mt-12 grid sd-stagger">
                 <TimelineItem
                   year={d.leader.tl1Year}
                   role={d.leader.tl1Role}
@@ -221,32 +199,71 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
                   last
                 />
               </div>
-              <div className="mt-9">
-                <Link
-                  href={projects}
-                  className="btn-g btn-ghost-g inline-block text-[14px] font-medium"
+              <div className="mt-9 sd-rise">
+                <a
+                  href={OSCAR_LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-g btn-ghost-g inline-flex items-center gap-2.5 text-[14px] font-medium"
                 >
+                  <LinkedInMark size={15} />
                   {d.leader.cta}
-                </Link>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ============ VALIDACIÓN ============ */}
+      <section className="bg-[var(--ink)] text-[var(--cream)] py-[120px] relative">
+        <div className="bound">
+          <SectionHead label={d.validate.label} num={d.validate.num} darkBg />
+          <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,88px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch] mb-[72px] mt-12 sd-wipe-up">
+            {d.validate.headingA}
+            <em className="not-italic italic text-[var(--retail)]">
+              {d.validate.headingEm}
+            </em>
+            {d.validate.headingB}
+          </h2>
+          <div className="grid md:grid-cols-3 gap-7 sd-stagger">
+            <ValCard
+              quote={d.validate.q1}
+              who={d.validate.who1}
+              sector={d.validate.sector1}
+              tone="pharma"
+            />
+            <ValCard
+              quote={d.validate.q2}
+              who={d.validate.who2}
+              sector={d.validate.sector2}
+              tone="retail"
+            />
+            <ValCard
+              quote={d.validate.q3}
+              who={d.validate.who3}
+              sector={d.validate.sector3}
+              tone="industrial"
+            />
+          </div>
+        </div>
+      </section>
+
       <div className="bound">
+        <FeaturedProjects lang={lang} dict={dict} />
+
         {/* ============ IMPACTO ============ */}
         <section className="py-[120px]">
           <SectionHead label={d.impact.label} num={d.impact.num} />
           <div className="mt-12">
-            <h2 className="font-display italic font-normal text-[clamp(40px,5vw,76px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch] mb-16">
+            <h2 className="font-display italic font-normal text-[clamp(40px,5vw,76px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch] mb-16 sd-wipe-up">
               {d.impact.headingA}
               <em className="not-italic italic text-[var(--pharma)]">
                 {d.impact.headingEm}
               </em>
               {d.impact.headingB}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border-y border-[var(--ink)]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border-y border-[var(--ink)] sd-stagger">
               <ImpactItem
                 k={d.impact.item1K}
                 v={d.impact.item1V}
@@ -282,14 +299,14 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
         <section id="metodologia" className="py-[120px]">
           <SectionHead label={d.method.label} num={d.method.num} />
           <div className="grid md:grid-cols-2 gap-14 items-end mb-[72px] mt-12">
-            <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,88px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch]">
+            <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,88px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch] sd-wipe-up">
               {d.method.headingA}
               <em className="not-italic italic text-[var(--pharma)]">
                 {d.method.headingEm}
               </em>
               {d.method.headingB}
             </h2>
-            <p className="text-[15px] leading-[1.6] text-[var(--ink-2)] max-w-[44ch]">
+            <p className="text-[15px] leading-[1.6] text-[var(--ink-2)] max-w-[44ch] sd-rise">
               {d.method.note}
             </p>
           </div>
@@ -303,64 +320,28 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
             ]}
           />
         </section>
-      </div>
 
-      {/* ============ VALIDACIÓN ============ */}
-      <section className="bg-[var(--ink)] text-[var(--cream)] py-[120px] relative">
-        <div className="bound">
-          <SectionHead label={d.validate.label} num={d.validate.num} darkBg />
-          <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,88px)] leading-[0.95] tracking-[-0.025em] max-w-[14ch] mb-[72px] mt-12">
-            {d.validate.headingA}
-            <em className="not-italic italic text-[var(--retail)]">
-              {d.validate.headingEm}
-            </em>
-            {d.validate.headingB}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-7">
-            <ValCard
-              quote={d.validate.q1}
-              who={d.validate.who1}
-              sector={d.validate.sector1}
-              tone="pharma"
-            />
-            <ValCard
-              quote={d.validate.q2}
-              who={d.validate.who2}
-              sector={d.validate.sector2}
-              tone="retail"
-            />
-            <ValCard
-              quote={d.validate.q3}
-              who={d.validate.who3}
-              sector={d.validate.sector3}
-              tone="industrial"
-            />
-          </div>
-        </div>
-      </section>
-
-      <div className="bound">
         {/* ============ PROYECCIÓN INTERNACIONAL ============ */}
         <section id="proyeccion" className="py-[140px] relative overflow-hidden">
           <SectionHead label={d.projection.label} num={d.projection.num} />
           <div className="grid md:grid-cols-2 gap-[72px] items-center mt-12">
             <div>
-              <div className="font-mono-g text-[11px] font-medium tracking-[0.14em] uppercase text-[var(--stone)] mb-6 flex items-center gap-3">
+              <div className="font-mono-g text-[11px] font-medium tracking-[0.14em] uppercase text-[var(--stone)] mb-6 flex items-center gap-3 sd-rise">
                 <span className="w-8 h-px bg-[var(--pharma)]" />
                 {d.projection.eyebrow}
               </div>
-              <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,92px)] leading-[0.92] tracking-[-0.03em] max-w-[14ch]">
+              <h2 className="font-display italic font-normal text-[clamp(44px,5.4vw,92px)] leading-[0.92] tracking-[-0.03em] max-w-[14ch] sd-wipe-up">
                 {d.projection.headingA}
                 <em className="not-italic italic text-[var(--industrial)]">
                   {d.projection.headingEm}
                 </em>
                 {d.projection.headingB}
               </h2>
-              <p className="mt-8 text-[16px] leading-[1.6] text-[var(--ink-2)] max-w-[48ch]">
+              <p className="mt-8 text-[16px] leading-[1.6] text-[var(--ink-2)] max-w-[48ch] sd-rise">
                 {d.projection.body}
               </p>
             </div>
-            <div className="border border-[var(--border)] bg-[var(--cream-3)] overflow-hidden">
+            <div className="border border-[var(--border)] bg-[var(--cream-3)] overflow-hidden sd-rise">
               <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] font-mono-g text-[10px] tracking-[0.16em] uppercase text-[var(--stone)]">
                 <span>{d.projection.frameworksKicker}</span>
                 <span className="text-[var(--ink)]">CO → US</span>
@@ -394,17 +375,17 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
           <SectionHead label={d.contact.label} num={d.contact.num} />
           <div className="grid md:grid-cols-[5fr_7fr] gap-[72px] items-start mt-12">
             <div>
-              <h2 className="font-display italic font-normal text-[clamp(48px,6vw,112px)] leading-[0.92] tracking-[-0.03em] max-w-[10ch]">
+              <h2 className="font-display italic font-normal text-[clamp(48px,6vw,112px)] leading-[0.92] tracking-[-0.03em] max-w-[10ch] sd-wipe-up">
                 {d.contact.headingA}
                 <em className="not-italic italic text-[var(--pharma)]">
                   {d.contact.headingEm}
                 </em>
                 {d.contact.headingB}
               </h2>
-              <p className="mt-7 text-[15.5px] leading-[1.6] text-[var(--ink-2)] max-w-[40ch]">
+              <p className="mt-7 text-[15.5px] leading-[1.6] text-[var(--ink-2)] max-w-[40ch] sd-rise">
                 {d.contact.lead}
               </p>
-              <div className="mt-10 grid gap-4 font-mono-g text-[12px] tracking-[0.06em]">
+              <div className="mt-10 grid gap-4 font-mono-g text-[12px] tracking-[0.06em] sd-rise">
                 <ContactRow k={d.contact.kEmail} v={d.contact.vEmail} />
                 <ContactRow k={d.contact.kWhats} v={d.contact.vWhats} />
                 <ContactRow k={d.contact.kLoc} v={d.contact.vLoc} />
