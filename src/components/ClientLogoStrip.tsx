@@ -50,13 +50,27 @@ export function ClientLogoStrip({ dict }: { dict: Dict }) {
           single inline row. Order + flex-wrap does this with one set of
           elements, so nothing is duplicated for screen readers. */}
       <div className="max-w-[1440px] mx-auto px-[max(5vw,32px)] py-6 md:py-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-        <span className="order-1 font-mono-g text-[10.5px] tracking-[0.18em] uppercase text-[rgba(244,241,234,0.55)] shrink-0">
-          {c.label}
-        </span>
+        {/* On phones this wrapper is the top row: label and "y más" sit
+            together at the left. `md:contents` dissolves it from md up, so both
+            spans become direct flex children of the strip again and the
+            order-* classes put them either side of the reel.
 
-        <span className="order-2 md:order-3 ml-auto font-mono-g text-[10.5px] tracking-[0.18em] uppercase text-[rgba(244,241,234,0.55)] shrink-0">
-          {c.more} →
-        </span>
+            Keep them packed left on mobile. Both `ml-auto` and
+            `justify-between` were tried to push "y más" to the right edge, and
+            both dropped it out of the paint on a real top-level 390px viewport
+            while still measuring as visible inside a same-size iframe — so it
+            looked fine in the probe and was missing on an actual phone. Any
+            right-edge placement here has to be screenshot-verified in a direct
+            render, not just measured. */}
+        <div className="order-1 flex items-center gap-3 md:contents">
+          <span className="md:order-1 font-mono-g text-[10.5px] tracking-[0.18em] uppercase text-[rgba(244,241,234,0.55)] shrink-0">
+            {c.label}
+          </span>
+
+          <span className="md:order-3 font-mono-g text-[10.5px] tracking-[0.18em] uppercase text-[rgba(244,241,234,0.55)] shrink-0">
+            {c.more} →
+          </span>
+        </div>
 
         {/* The reel. Three identical runs slide left by exactly one run width
             (a third of the track), so when run A exits, run B is pixel-aligned
@@ -68,7 +82,7 @@ export function ClientLogoStrip({ dict }: { dict: Dict }) {
         {/* md:basis-0 matters: the track is ~2730px of content, so with an
             auto basis the reel's base size forces its own line in a wrapping
             flex row. Zero basis + grow lets it take whatever is left instead. */}
-        <div className="marquee marquee-bleed order-3 md:order-2 w-full md:w-auto md:grow md:basis-0 min-w-0">
+        <div className="marquee marquee-bleed order-2 md:order-2 w-full md:w-auto md:grow md:basis-0 min-w-0">
           <div className="marquee-track">
             <Run />
             <Run ariaHidden />

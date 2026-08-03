@@ -137,6 +137,13 @@ and "y más" share a top row and the reel runs full-bleed below via
   on desktop the reel's auto base size forces its own line. `md:basis-0` +
   `grow` keeps it inline. (Under the old `nowrap` container it shrank instead,
   which is why this only appeared once the mobile layout was added.)
+- The label and "y más" stay packed to the **left** on mobile. Pushing "y más"
+  to the right edge — tried with both `ml-auto` and `justify-between` — dropped
+  it out of the paint on a real top-level 390px viewport while still measuring
+  as visible (correct x, `visibility: visible`, `opacity: 1`) inside a
+  same-width iframe. The probe said fine, the phone said missing. If you want
+  it right-aligned, verify with a **direct** headless render at 390, not the
+  iframe probe and not `getBoundingClientRect`.
 
 Only the first run is exposed to assistive tech; the duplicates are
 `aria-hidden`, and under `prefers-reduced-motion: reduce` they're hidden
