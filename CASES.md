@@ -50,16 +50,18 @@ his composed layout sheet (`hero.png` — treat as layout spec, it's usually
 - **J&J corporate** ("Healthcare Experience Systems") — Óscar's brief suggests a
   second J&J case (totems, señalización, activaciones). All assets staged.
 - **Gobernación** — `draft: true`, hidden from the site.
-- **Real testimonials** — see below. ⚠️ The three quotes live on the site today
-  are placeholders, not real client voices.
+- **Testimonials** — real attributions since 2026-09-17 (see below). Card 1's
+  quote wording is still the old placeholder; Óscar only sent its attribution.
 
 ## Testimonials — the Validación section
 
 The `Validación / Validation` section (home, section 009) renders three quote
-cards. **The copy currently there is invented placeholder text** with anonymous
-attributions ("Director Técnico · Farmacéutico · CO"). Juan asked Óscar for real
-ones on 2026-08-01; decision was to leave the placeholders up until the real
-ones land, then swap in one deploy.
+cards. Since 2026-09-17 they carry Óscar's real clients, set exactly as he sent
+them (his spelling "Proclim", "Andre"): Andre Higuera (Proclim Pharma), Víctor
+Manuel García (Oxxo Colombia), Oscar Fabián Vargas Ospina (Terranum — not Zona
+Franca Bogotá, a different company). Cards 2 and 3 are the clients' words; card
+1 keeps the earlier placeholder quote under Andre's name, at Óscar's request.
+Each card now has `who` (name), `role` and `sector` (company) keys.
 
 Everything is copy-only — no component changes needed:
 
@@ -101,9 +103,8 @@ content twice. Leading with the person is the point — don't move it back down
 without solving that repetition another way. Validación follows it so the
 testimonials back the person immediately, before the work is shown.
 
-⚠️ That places the **placeholder testimonials** in the second slot on the page.
-See the testimonials section above — swapping in Óscar's real quotes is now
-higher-stakes than when they sat two-thirds of the way down.
+That places the testimonials in the second slot on the page, so they carry
+real names — see the testimonials section above.
 
 **Unrendered i18n blocks.** `about` (`004`), `sectors` (`005`) and now
 `mensaje`/"Enfoque" (`003`) still carry `num:` values but render nowhere.

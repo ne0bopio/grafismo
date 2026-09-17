@@ -241,7 +241,10 @@ img, svg { display: block; max-width: 100%; }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-slide 38s linear infinite;
+  /* ~24px/s, the pace the original text reel read at. One run of 24 logo
+     tiles is ~5200px — scale this with the run width when the list changes.
+     The "Rápido" button multiplies it via playbackRate, not this value. */
+  animation: marquee-slide 215s linear infinite;
 }
 /* Pausing on hover lets someone actually read a client name. */
 .marquee:hover .marquee-track { animation-play-state: paused; }

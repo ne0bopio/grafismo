@@ -107,32 +107,6 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
           </div>
         </div>
 
-        <div
-          className="mt-14 lg:mt-16 pt-6 grid grid-cols-2 md:grid-cols-4 gap-y-6 border-t border-[var(--border)] font-mono-g rise"
-          style={{ animationDelay: "1.3s" }}
-        >
-          {[
-            { v: d.hero.stat1Value, k: d.hero.stat1Label, c: "var(--pharma)" },
-            { v: d.hero.stat2Value, k: d.hero.stat2Label, c: "var(--retail)" },
-            { v: d.hero.stat3Value, k: d.hero.stat3Label, c: "var(--industrial)" },
-            { v: d.hero.stat4Value, k: d.hero.stat4Label, c: "var(--ink)" },
-          ].map((s, i) => (
-            <div
-              key={i}
-              className={`px-3 md:px-5 ${i === 0 ? "pl-0" : ""} ${i === 3 ? "pr-0" : ""} ${i < 3 ? "md:border-r border-[var(--border)]" : ""}`}
-            >
-              <div
-                className="font-display italic font-normal text-[clamp(24px,2.6vw,38px)] leading-none tracking-[-0.015em]"
-                style={{ color: s.c }}
-              >
-                {s.v}
-              </div>
-              <span className="block mt-[8px] text-[10px] tracking-[0.14em] uppercase text-[var(--stone)]">
-                {s.k}
-              </span>
-            </div>
-          ))}
-        </div>
       </section>
 
       <ClientLogoStrip dict={dict} />
@@ -230,18 +204,21 @@ export function HomePage({ lang, dict }: { lang: Lang; dict: Dict }) {
             <ValCard
               quote={d.validate.q1}
               who={d.validate.who1}
+              role={d.validate.role1}
               sector={d.validate.sector1}
               tone="pharma"
             />
             <ValCard
               quote={d.validate.q2}
               who={d.validate.who2}
+              role={d.validate.role2}
               sector={d.validate.sector2}
               tone="retail"
             />
             <ValCard
               quote={d.validate.q3}
               who={d.validate.who3}
+              role={d.validate.role3}
               sector={d.validate.sector3}
               tone="industrial"
             />
@@ -547,14 +524,19 @@ function Step({
 function ValCard({
   quote,
   who,
+  role,
   sector,
   tone,
 }: {
   quote: string;
   who: string;
+  role: string;
   sector: string;
   tone: "pharma" | "retail" | "industrial";
 }) {
+  // The sector colour marks the card with a swatch, not the text: pharma red
+  // (3.6:1) and industrial navy (1.8:1) are unreadable as small type on ink,
+  // and this line now carries the client's name.
   const sectorColor = `var(--${tone})`;
   return (
     <div className="p-9 px-7 border border-[rgba(244,241,234,0.14)] bg-[rgba(244,241,234,0.02)] flex flex-col gap-6 transition-all duration-300 hover:border-[rgba(244,241,234,0.3)] hover:bg-[rgba(244,241,234,0.04)]">
@@ -563,10 +545,13 @@ function ValCard({
       </p>
       <div className="mt-auto pt-6 border-t border-[rgba(244,241,234,0.14)] grid gap-1">
         <span className="text-[13px] font-medium text-[var(--cream)]">{who}</span>
-        <span
-          className="font-mono-g text-[10px] tracking-[0.14em] uppercase"
-          style={{ color: sectorColor }}
-        >
+        <span className="text-[13px] text-[rgba(244,241,234,0.72)]">{role}</span>
+        <span className="mt-1 flex items-center gap-2 font-mono-g text-[10px] tracking-[0.14em] uppercase text-[rgba(244,241,234,0.72)]">
+          <span
+            aria-hidden="true"
+            className="shrink-0 w-[7px] h-[7px] ring-1 ring-[rgba(244,241,234,0.25)]"
+            style={{ backgroundColor: sectorColor }}
+          />
           {sector}
         </span>
       </div>
