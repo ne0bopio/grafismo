@@ -211,22 +211,22 @@ img, svg { display: block; max-width: 100%; }
   }
 }
 
-/* ---------- Client reel (marquee) ----------
-   Three identical runs inside the track; translating by -33.3333% (one run)
-   lands run B exactly where run A began, so the loop is seamless without
-   measuring anything. Keep the run count and this percentage in sync — the
-   translate must equal 100/<number of runs>%. Edge fade is a mask so it works
-   over the ink background without faking a gradient in the section's colour. */
+/* ---------- Client reel ----------
+   A real horizontal scroller, not a CSS animation: people swipe it on a phone,
+   drag or trackpad-scroll it on desktop, and it drifts on its own while nobody
+   touches it (ClientLogoStrip drives scrollLeft). Edge fade is a mask so it
+   works over the ink background without faking a gradient. */
 .marquee {
   --marquee-fade: 24px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
           mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
 }
-/* On a phone the reel breaks out of the section padding and runs edge to edge,
-   so the names get the full screen width instead of ~326px of a 390px view.
-   The mask then fades at the true screen edges, which is what makes it read as
-   a reel rather than a clipped list.
+.marquee::-webkit-scrollbar { display: none; }
+/* On a phone the reel breaks out of the section padding and runs edge to edge.
    A negative margin alone only SHIFTS a width:100% flex item left, leaving the
    same amount of dead space on the right — the width has to grow by both
    insets too. This rule is unlayered, so it beats Tailwind's layered `w-full`. */
@@ -241,24 +241,6 @@ img, svg { display: block; max-width: 100%; }
 .marquee-track {
   display: flex;
   width: max-content;
-  /* ~24px/s, the pace the original text reel read at. One run of 24 logo
-     tiles is ~5200px — scale this with the run width when the list changes.
-     The "Rápido" button multiplies it via playbackRate, not this value. */
-  animation: marquee-slide 215s linear infinite;
-}
-/* Pausing on hover lets someone actually read a client name. */
-.marquee:hover .marquee-track { animation-play-state: paused; }
-
-@keyframes marquee-slide {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-33.3333%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-  /* Without motion the duplicate run is just repeated noise — hide it and let
-     the strip sit still as a plain list. */
-  .marquee-track > [aria-hidden="true"] { display: none; }
 }
 
 /* Anyone who asks the OS for less motion gets the finished page. Safe because

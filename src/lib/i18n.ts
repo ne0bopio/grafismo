@@ -35,7 +35,8 @@ export const es = {
     },
     clients: {
       label: "Hemos trabajado con",
-      fast: "Rápido",
+      prev: "Anteriores",
+      next: "Siguientes",
       all: "Ver todos",
       close: "Cerrar",
     },
@@ -321,7 +322,8 @@ export const en = {
     },
     clients: {
       label: "We have worked with",
-      fast: "Fast",
+      prev: "Previous",
+      next: "Next",
       all: "See all",
       close: "Close",
     },
